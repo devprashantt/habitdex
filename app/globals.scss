@@ -86,7 +86,7 @@ body {
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
+  color: rgb(var(--primary-glow));
   background: linear-gradient(
       to bottom,
       transparent,
@@ -98,6 +98,10 @@ body {
 a {
   color: inherit;
   text-decoration: none;
+}
+
+::selection {
+  color: #0885ff;
 }
 
 @media (prefers-color-scheme: dark) {
