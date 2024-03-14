@@ -1,3 +1,8 @@
+@font-face {
+    font-family: "gilroy";
+    src: url(/public/fonts/Gilroy-Regular.ttf);
+}
+
 * {
     font-family: "gilroy";
     margin: 0px;
@@ -10,7 +15,7 @@
     }
 }
 
-#first{
+#first {
     height: 100vh;
     width: 100%;
     color: white;
@@ -54,6 +59,7 @@
         background-color: #313130;
     }
 }
+
 #second {
     width: 100%;
     height: 100vh;
@@ -95,7 +101,7 @@
     }
 }
 
-#third{
+#third {
     height: 100vh;
     width: 100%;
     color: white;
