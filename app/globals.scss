@@ -1,0 +1,52 @@
+*{
+    font-family: "gilroy";
+    margin: 0px;
+    padding:0px;
+    color: white;
+    ::-webkit-scrollbar{
+        display: none;
+    }
+}
+#first{
+    height: 100vh;
+    width: 100%;
+    background-color: #1e1e1e;
+    overflow: hidden;
+    display: flex;
+    flex-wrap: wrap;
+}
+#first-1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 50%;
+    height: 100%;
+    button{
+        color: #1e1e1e;
+        border-radius: 15px;
+        padding: 20px 40px;
+        position: relative;
+        left: -335px;
+    }
+    h1{
+        font-size: 5rem;
+        margin: 0px 60px 0px 60px;
+        word-spacing: -12px;
+        line-height: 80px;
+    }
+    h6{
+        color: #6f6f6f;
+        margin-top: 30px;
+        margin-bottom: 30px;
+        font-size: 19px;
+        position: relative;
+        left: -180px;
+    }
+}
+#first-2{
+    width: 50%;
+    height: 100%;
+    background-color: #313130;
+}
+
