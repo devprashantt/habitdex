@@ -1,5 +1,5 @@
 import Create_Habit from "@/components/Forms/Create_Habit";
-import RegisterUser from "@/components/RegisterUser";
+import RegisterUser from '@/app/home/components/RegisterUser';
 import { UserButton, currentUser } from "@clerk/nextjs";
 
 const page = async () => {
