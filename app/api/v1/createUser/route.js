@@ -1,5 +1,5 @@
 import connectDB from "@/lib/db/configs/connection";
-import { Individual } from "@/lib/models/user.model";
+import { Individual } from "@/lib/db/models/user.model";
 import { auth, currentUser } from "@clerk/nextjs";
 
 export async function GET() {
