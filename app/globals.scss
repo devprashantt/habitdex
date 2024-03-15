@@ -1,12 +1,8 @@
-@font-face {
-    font-family: "gilroy";
-    src: url(/public/fonts/Gilroy-Regular.ttf);
-}
-
 * {
     font-family: "gilroy";
     margin: 0px;
     padding: 0px;
+    font-family: 'Gilroy', sans-serif;
     scroll-behavior: smooth;
     box-sizing: border-box;
 
