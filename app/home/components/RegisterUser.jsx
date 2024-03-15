@@ -5,8 +5,7 @@ import useUser from '@/hooks/apis/useUser';
 const RegisterUser = () => {
 	const { registerUser, error } = useUser();
 
-	const handleSubmit = async (e) => {
-		e.preventDefault();
+	const handleSubmit = async () => {
 		const payload = {};
 		const response = await registerUser(payload, () => {});
 	};
@@ -15,7 +14,7 @@ const RegisterUser = () => {
 		handleSubmit();
 	}, []);
 
-	return <div>Logging in...</div>;
+	return <></>;
 };
 
 export default RegisterUser;

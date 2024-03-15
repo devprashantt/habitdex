@@ -45,7 +45,7 @@ export default function Create_Habit() {
                             display: "flex",
                             
                         }}>
-                            <input type="text" value={completion+" /Day"} />
+                            <input type="text" readOnly value={completion+" /Day"} />
                             <div style={{
                             }}>
                                 <button style={{

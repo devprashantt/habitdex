@@ -1,4 +1,4 @@
-import Create_Habit from "@/components/Forms/Create_Habit";
+import Create_Habit from "@/containers/Forms/CreateHabit";
 import RegisterUser from '@/app/home/components/RegisterUser';
 import { UserButton, currentUser } from "@clerk/nextjs";
 

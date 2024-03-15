@@ -1,6 +1,7 @@
 'use client';
 
 import axios from 'axios';
+import { useState } from 'react';
 
 const useUser = () => {
 	const [error, setError] = useState(null);
