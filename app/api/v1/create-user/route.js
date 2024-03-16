@@ -11,10 +11,12 @@ export async function GET() {
 		return unauthorized('You must be signed in to create a user');
 	}
 	const individual = await Individual.findOne({ clerk_user_id: userId });
+	
 	if (!individual) {
+		const fullName = user.firstName + (user.lastName ? " " + user.lastName : "")
 		const new_individual = new Individual({
 			email: user.emailAddresses[0].emailAddress,
-			name: user.firstName + ' ' + user.lastName,
+			name: fullName,
 			clerk_user_id: user.id,
 			charts: [],
 		});

@@ -1,20 +1,20 @@
-* {
+
+*{
     font-family: "gilroy";
     margin: 0px;
-    padding: 0px;
-    font-family: 'Gilroy', sans-serif;
-    scroll-behavior: smooth;
-    box-sizing: border-box;
-
-    ::-webkit-scrollbar {
+    padding:0px;
+    ::-webkit-scrollbar{
         display: none;
     }
 }
-
-#first {
+h1 {
+    
+    color: white;
+}
+#first{
     height: 100vh;
     width: 100%;
-    color: white;
+
     background-color: #1e1e1e;
     overflow: hidden;
     display: flex;
