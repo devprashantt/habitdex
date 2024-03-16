@@ -1,6 +1,6 @@
 import Link from "next/link";
 import styles from "./page.module.scss";
-import { currentUser } from "@clerk/nextjs";
+import { SignedIn, SignedOut, currentUser } from "@clerk/nextjs";
 
 export default async function Home() {
 	const user = await currentUser();
@@ -10,7 +10,12 @@ export default async function Home() {
 				<div id="first-1">
 					<h1>Welcome to our Habit Tracking App</h1>
 					<h6>Track your habit,achieve your goals,live your best life</h6>
-					<Link href="/sign-up"><button>Get Started</button></Link>
+					<SignedIn>
+						<Link href="/home"><button>Home</button></Link>						
+					</SignedIn>
+					<SignedOut>
+						<Link href="/sign-up"><button>Get Started</button></Link>
+					</SignedOut>
 				</div>
 				<div id="first-2">
 
