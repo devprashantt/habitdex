@@ -1,0 +1,30 @@
+// mixins
+@mixin flex(
+  $direction: row,
+  $justify: flex-start,
+  $align: flex-start,
+  $gap: 1rem
+) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+  gap: $gap;
+}
+
+// icon size
+@mixin icon-size($width: 1.6rem, $height: 1.6rem) {
+  width: $width;
+  height: $height;
+}
+
+// border mixin
+@mixin border(
+  $width: 1px,
+  $style: solid,
+  $color: rgba(197, 197, 197, 0.5),
+  $border-radius: 8px
+) {
+  border: $width $style $color;
+  border-radius: $border-radius;
+}
