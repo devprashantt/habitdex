@@ -71,7 +71,6 @@ export default function CreateHabit() {
 				{
 					icons.map((icon, index) => {
 						return <div key={index} onClick={(e)=>{
-							console.log(icon.name);
 							setIcon(index);
 						}}>
 							{icon.icon}
@@ -89,7 +88,6 @@ export default function CreateHabit() {
 							<div
 								key={index}
 								onClick={(e)=>{
-									console.log(color.name);
 									setColor(index);
 								}}
 								style={{
