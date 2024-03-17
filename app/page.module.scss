@@ -1,2 +1,122 @@
 @import "../constants/styles/mixins.scss";
 @import "../constants/styles/variables.scss";
+
+.main{
+  width: 100vw;
+  overflow: hidden;
+}
+
+.main__part1{
+  height: 100vh;
+  width: 100%;
+  color: white;
+  background-color: $gray-1000;
+  display:flex;
+  flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.main__part1__left{
+  height: 100%;
+  width: 50%;
+  padding: 0px $spacing-800 0px $spacing-800;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  button{
+    padding: $spacing-500 $spacing-800;
+    border-radius: $border-radius-large;
+    color: $gray-1000;
+  }
+  h1{
+    word-spacing: -8px;
+    line-height: $spacing-800;
+    font-size: 5em;
+  }
+  h6{
+    color: $gray-600;
+    font-size: $font-size-xmedium;
+    margin-top: $spacing-600;
+    margin-bottom: $spacing-600;
+  }
+}
+
+.main__part1__right{
+  height: 100%;
+  width: 50%;
+  background-color : $gray-800;
+  padding: 0px $spacing-800 0px $spacing-800;
+}
+
+.main__part2{
+  height: 100vh;
+  width: 100%;
+  font-size: 80px;
+  padding: $spacing-600;
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+}
+
+.main__part2__sign_in{
+
+}
+
+.main__part2__or{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.main__part2__sign_up{
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  flex-direction: column;
+}
+
+.main__part3{
+  height: 100vh;
+  width: 100%;
+  color: white;
+  background-color: $gray-1000;
+  display:flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+  align-items: center;
+}
+
+.main__part3__right{
+  height: 100%;
+  width: 50%;
+  padding: 0px $spacing-800 0px $spacing-800;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  button{
+    padding: $spacing-500 $spacing-800;
+    border-radius: $border-radius-large;
+    color: $gray-1000;
+  }
+  h1{
+    word-spacing: -8px;
+    line-height: $spacing-800;
+    font-size: 5em;
+  }
+  h6{
+    color: $gray-600;
+    font-size: $font-size-xmedium;
+    margin-top: $spacing-600;
+    margin-bottom: $spacing-600;
+  }
+}
+
+.main__part3__left{
+  height: 100%;
+  width: 50%;
+  background-color : $gray-800;
+  padding: 0px $spacing-800 0px $spacing-800;
+}
