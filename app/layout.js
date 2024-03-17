@@ -18,6 +18,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
 	return (
 		<ClerkProvider>
+		<html lang="en">
 			<Head>
 				<link
 					rel='stylesheet'
@@ -25,6 +26,7 @@ export default function RootLayout({ children }) {
 				/>
 			</Head>
 			<body>{children}</body>
+		</html>
 		</ClerkProvider>
 	);
 }
