@@ -12,9 +12,7 @@ const themeColors = [
 
 export default function CreateHabit() {
 	const [completion, setCompletion] = useState(0);
-	const handleSubmit = (e) => {
-		e.preventDefault();
-	};
+	
 
 	return (
 		<div>

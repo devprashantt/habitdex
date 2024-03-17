@@ -1,8 +1,7 @@
 import connectDB from '@/lib/db/configs/connection';
 import { Charts } from '@/lib/db/models/chart.model';
-import { Individual } from '@/lib/db/models/user.model';
 import { created, unauthorized } from '@/utils/responses';
-import { auth, currentUser } from '@clerk/nextjs';
+import { auth } from '@clerk/nextjs';
 import DB_MODELS from '@/utils/modelsEnum';
 
 export async function POST(request) {
