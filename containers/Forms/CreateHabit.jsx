@@ -1,6 +1,6 @@
 'use client';
 import addPost from '@/actions/habit/createHabit';
-import { HabitFormIcons, themeColors } from '@/constants/CreateHabitForm';
+import { HabitFormIcons, themeColors } from '@/constants/NewHabitForm';
 import { useState } from 'react';
 import { MdDone } from 'react-icons/md';
 
