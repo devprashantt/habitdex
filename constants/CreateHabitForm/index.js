@@ -1,4 +1,4 @@
-import HabitFormIcons from "@/constants/CreateHabitForm/icons";
-import themeColors from "@/constants/CreateHabitForm/colors";
+import HabitFormIcons from "@/constants/CreateHabitForm/Icons";
+import themeColors from "@/constants/CreateHabitForm/Colors";
 
 export { HabitFormIcons, themeColors };
