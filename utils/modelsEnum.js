@@ -1,5 +1,5 @@
 import { Chart } from '@/lib/db/models/chart.model';
-import { Contribution } from '@/lib/db/models/dailyContribution.model';
+import { Contribution } from '@/lib/db/models/contribution.model';
 import {User} from '@/lib/db/models/user.model';
 
 const DB_MODELS = {

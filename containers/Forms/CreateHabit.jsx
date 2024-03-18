@@ -1,7 +1,6 @@
 'use client';
 import addPost from '@/actions/habit/createHabit';
 import { HabitFormIcons, themeColors } from '@/constants/CreateHabitForm';
-import useHabitForm from '@/hooks/useHabitForm';
 import { useState } from 'react';
 import { MdDone } from 'react-icons/md';
 
@@ -14,14 +13,9 @@ const themeColor = themeColors;
 
 
 export default function CreateHabit() {
-	const {
-		completion,
-        setCompletion,
-        icon,
-        setIcon,
-        color,
-        setColor
-	} = useHabitForm();
+	const [completion, setCompletion] = useState(1);
+	const [icon, setIcon] = useState(0);
+	const [color, setColor] = useState(0);
 	return (
 		<div>
 			<form action={addPost}>
