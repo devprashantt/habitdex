@@ -1,18 +1,19 @@
 'use client';
-import addPost from '@/actions/habit/createHabit';
+
+// libraries
 import { useState } from 'react';
 import { MdDone } from 'react-icons/md';
 
-const themeColors = [
-	{
-		name: 'theme-color-1',
-		color: '#000000',
-	},
-];
+// actions
+import addPost from '@/actions/habit/createHabit';
+
+// constants
+import { habitFormIcons, themeColors } from '@/constants';
 
 export default function CreateHabit() {
-	const [completion, setCompletion] = useState(0);
-	
+	const [completion, setCompletion] = useState(1);
+	const [icon, setIcon] = useState('pulse');
+	const [color, setColor] = useState(0);
 
 	return (
 		<div>
@@ -39,35 +40,64 @@ export default function CreateHabit() {
 					<div>
 						<input name='completions' type='text' readOnly value={completion + ' /Day'} />
 						<div>
-							<button
+							<div
 								onClick={(e) => {
-									e.preventDefault();
-									setCompletion(Math.max(completion - 1, 0));
+									setCompletion(Math.max(completion - 1, 1));
 								}}>
 								-
-							</button>
-							<button
+							</div>
+							<div
 								onClick={(e) => {
-									e.preventDefault();
-									setCompletion(Math.min(completion + 1, 10));
+									setCompletion(Math.min(completion + 1, 9));
 								}}>
 								+
-							</button>
+							</div>
 						</div>
 					</div>
 				</div>
 				<label>Icon</label>
-				<br />
-				<label>Color</label>
+				<input
+					type='text'
+					name='icon'
+					readOnly
+					value={habitFormIcons?.find((iconDetail) => iconDetail?.name === icon).name}
+				/>
 				<div>
-					{themeColors.map((color, index) => {
+					{habitFormIcons?.map((iconDetail, index) => {
 						return (
 							<div
 								key={index}
+								onClick={(e) => {
+									setIcon(iconDetail?.name);
+								}}>
+								{iconDetail?.icon}
+							</div>
+						);
+					})}
+				</div>
+				<br />
+				<label>Color</label>
+				<input
+					type='text'
+					name='color'
+					readOnly
+					value={themeColors[color].name}
+					style={{
+						visibility: 'hidden',
+					}}
+				/>
+				<div>
+					{themeColors?.map((color, index) => {
+						return (
+							<div
+								key={index}
+								onClick={(e) => {
+									setColor(index);
+								}}
 								style={{
 									width: '20px',
 									height: '20px',
-									backgroundColor: color,
+									backgroundColor: color.color,
 									borderRadius: '100%',
 								}}></div>
 						);

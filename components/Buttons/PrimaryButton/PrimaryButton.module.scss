@@ -1,0 +1,9 @@
+@import "@/constants/styles/mixins.scss";
+@import "@/constants/styles/variables.scss";
+
+.button{
+  padding: $spacing-500 $spacing-800;
+  border-radius: $border-radius-large;
+  color: $gray-1000;
+  background-color: $gray-100;
+}

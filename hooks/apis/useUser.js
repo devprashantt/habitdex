@@ -8,7 +8,7 @@ const useUser = () => {
 	const [isLoading, setIsLoading] = useState(false);
 
 	const registerUser = async (payload, cb) => {
-		const response = await axios.get('/api/v1/create-user');
+		const response = await axios.get('/api/v1/user/create-user');
 	};
 
 	return {

@@ -1,5 +1,4 @@
 import connectDB from '@/lib/db/configs/connection';
-import { Charts } from '@/lib/db/models/chart.model';
 import { created, unauthorized } from '@/utils/responses';
 import { auth } from '@clerk/nextjs';
 import DB_MODELS from '@/utils/modelsEnum';
@@ -15,7 +14,7 @@ export async function POST(request) {
 	if (!individual) {
 		return unauthorized();
 	}
-	const new_chart = new Charts({
+	const new_chart = new DB_MODELS.CHART({
 		name: data.name,
 		description: data.description,
 		user_id: individual._id,

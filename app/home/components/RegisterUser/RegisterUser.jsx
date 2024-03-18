@@ -12,7 +12,7 @@ const RegisterUser = () => {
 
 	useEffect(() => {
 		handleSubmit();
-	}, []);
+	});
 
 	return <></>;
 };
