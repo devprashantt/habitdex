@@ -1,4 +1,4 @@
-import habitFormIcons from './icons';
-import themeColors from './colors';
+import habitFormIcons from "./icons";
+import { themeColors, themeColorJson } from "./colors";
 
-export { habitFormIcons, themeColors };
+export { habitFormIcons, themeColors, themeColorJson };

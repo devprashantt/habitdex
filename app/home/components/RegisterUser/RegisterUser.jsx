@@ -1,20 +1,20 @@
-'use client';
-import { useEffect } from 'react';
-import useUser from '@/hooks/apis/useUser';
+"use client";
+import { useEffect } from "react";
+import useUser from "@/hooks/apis/useUser";
 
 const RegisterUser = () => {
-	const { registerUser, error } = useUser();
+  const { registerUser, error } = useUser();
 
-	const handleSubmit = async () => {
-		const payload = {};
-		const response = await registerUser(payload, () => {});
-	};
+  const handleSubmit = async () => {
+    const payload = {};
+    const response = await registerUser(payload, () => {});
+  };
 
-	useEffect(() => {
-		handleSubmit();
-	});
+  useEffect(() => {
+    handleSubmit();
+  });
 
-	return <></>;
+  return <></>;
 };
 
 export default RegisterUser;
