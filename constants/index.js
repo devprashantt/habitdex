@@ -1,4 +1,6 @@
 import habitFormIcons from "./icons";
 import { themeColors, themeColorJson } from "./colors";
 
-export { habitFormIcons, themeColors, themeColorJson };
+const resultPerPage = 5
+
+export { habitFormIcons, themeColors, themeColorJson, resultPerPage };
