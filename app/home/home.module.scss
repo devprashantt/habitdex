@@ -1,0 +1,15 @@
+.main__container__wrapper {
+    border: 1px solid black;
+    width: fit-content;
+    padding: 10px 20px 10px 20px;
+}
+.main__container {
+    width: 20rem;
+    display: flex;
+    justify-content: space-between;
+}
+.main__container__child1 {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+}
