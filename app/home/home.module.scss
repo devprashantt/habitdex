@@ -1,15 +1,34 @@
+@import "@/constants/styles/variables.scss";
+
 .main__container__wrapper {
-    border: 1px solid black;
-    width: fit-content;
-    padding: 10px 20px 10px 20px;
+  border: 1px solid black;
+  width: fit-content;
+  padding: 10px 20px 10px 20px;
 }
 .main__container {
-    width: 20rem;
-    display: flex;
-    justify-content: space-between;
+  width: 20rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 .main__container__child1 {
-    display: flex;
-    justify-content: space-between;
-    gap: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+}
+.description {
+  font-size: small;
+}
+.addContribution {
+  font-size: large;
+  font: bold;
+  border-radius: 100%;
+  border: 1px solid black;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2px;
 }

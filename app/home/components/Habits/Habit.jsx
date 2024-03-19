@@ -1,11 +1,18 @@
 import { habitFormIconsJson, themeColorJson } from "@/constants";
-import styles from "@/app/home/home.module.scss"
+import styles from "@/app/home/home.module.scss";
+import axios from "axios";
 
 const Habit = (props) => {
   const color = themeColorJson[props.color];
-
+  const handleSubmit = async () => {
+    const response = await axios.post(
+      "/api/v1/contribution/addContributionToday",
+      { name: props.name },
+    );
+  };
   return (
-    <div className={styles.main__container__wrapper}
+    <div
+      className={styles.main__container__wrapper}
       style={{
         backgroundColor: color,
       }}
@@ -13,14 +20,18 @@ const Habit = (props) => {
       <div className={styles.main__container}>
         <div className={styles.main__container__child1}>
           {habitFormIconsJson[props.icon]}
-          <p>{props.name}</p>
+          <div>
+            <p>{props.name}</p>
+            <p className={styles.description}>{props.description}</p>
+          </div>
         </div>
-        <p>{props.contributions_per_day}</p>
+        <p onClick={handleSubmit} className={styles.addContribution}>
+          +
+        </p>
       </div>
+      <div></div>
     </div>
-  )
-
-  return <div>Habit {props.count}</div>;
+  );
 };
 
 export default Habit;

@@ -108,134 +108,216 @@ const habitFormIcons = [
 ];
 
 const habitFormIconsJson = {
-  "pulse": <CiWavePulse1 style={{
-    padding: "1px",
-    backgroundColor: "white",
-    scale: "1.2",
-    borderRadius:"100%"
-  }} />,
-  "alarm": <IoAlarmOutline style={{
-    padding: "1px",
-    backgroundColor: "white",
-    scale: "1.2",
-    borderRadius:"100%"
-  }} />,
-  "apple": <CiApple style={{
-    padding: "1px",
-    backgroundColor: "white",
-    scale: "1.2",
-    borderRadius:"100%"
-  }} />,
-  "bed": <FaBed style={{
-    padding: "1px",
-    backgroundColor: "white",
-    scale: "1.2",
-    borderRadius:"100%"
-  }} />,
-  "wallet": <FaWallet style={{
-    padding: "1px",
-    backgroundColor: "white",
-    scale: "1.2",
-    borderRadius:"100%"
-  }} />,
-  "heartBolt": <FaHeartCircleBolt style={{
-    padding: "1px",
-    backgroundColor: "white",
-    scale: "1.2",
-    borderRadius:"100%"
-  }} />,
-  "moodKid": <TbMoodKid style={{
-    padding: "1px",
-    backgroundColor: "white",
-    scale: "1.2",
-    borderRadius:"100%"
-  }} />,
-  "gym": <CgGym style={{
-    padding: "1px",
-    backgroundColor: "white",
-    scale: "1.2",
-    borderRadius:"100%"
-  }} />,
-  "book": <FaBook style={{
-    padding: "1px",
-    backgroundColor: "white",
-    scale: "1.2",
-    borderRadius:"100%"
-  }} />,
-  "terminal": <FaTerminal style={{
-    padding: "1px",
-    backgroundColor: "white",
-    scale: "1.2",
-    borderRadius:"100%"
-  }} />,
-  "colorPalette": <IoColorPaletteOutline style={{
-    padding: "1px",
-    backgroundColor: "white",
-    scale: "1.2",
-    borderRadius:"100%"
-  }} />,
-  "yinYang": <FaYinYang style={{
-    padding: "1px",
-    backgroundColor: "white",
-    scale: "1.2",
-    borderRadius:"100%"
-  }} />,
-  "musicNote": <CiMusicNote1 style={{
-    padding: "1px",
-    backgroundColor: "white",
-    scale: "1.2",
-    borderRadius:"100%"
-  }} />,
-  "shower": <FaShower style={{
-    padding: "1px",
-    backgroundColor: "white",
-    scale: "1.2",
-    borderRadius:"100%"
-  }} />,
-  "notes": <TbNotes style={{
-    padding: "1px",
-    backgroundColor: "white",
-    scale: "1.2",
-    borderRadius:"100%"
-  }} />,
-  "cup": <RiCupLine style={{
-    padding: "1px",
-    backgroundColor: "white",
-    scale: "1.2",
-    borderRadius:"100%"
-  }} />,
-  "dollar": <TbCurrencyDollar style={{
-    padding: "1px",
-    backgroundColor: "white",
-    scale: "1.2",
-    borderRadius:"100%"
-  }} />,
-  "heart": <CiHeart style={{
-    padding: "1px",
-    backgroundColor: "white",
-    scale: "1.2",
-    borderRadius:"100%"
-  }} />,
-  "leaf": <LuLeaf style={{
-    padding: "1px",
-    backgroundColor: "white",
-    scale: "1.2",
-    borderRadius:"100%"
-  }} />,
-  "console": <GiConsoleController style={{
-    padding: "1px",
-    backgroundColor: "white",
-    scale: "1.2",
-    borderRadius:"100%"
-  }} />,
-  "bicycle": <FaBicycle style={{
-    padding: "1px",
-    backgroundColor: "white",
-    scale: "1.2",
-    borderRadius:"100%"
-  }} />,
+  pulse: (
+    <CiWavePulse1
+      style={{
+        padding: "1px",
+        backgroundColor: "white",
+        scale: "1.2",
+        borderRadius: "100%",
+      }}
+    />
+  ),
+  alarm: (
+    <IoAlarmOutline
+      style={{
+        padding: "1px",
+        backgroundColor: "white",
+        scale: "1.2",
+        borderRadius: "100%",
+      }}
+    />
+  ),
+  apple: (
+    <CiApple
+      style={{
+        padding: "1px",
+        backgroundColor: "white",
+        scale: "1.2",
+        borderRadius: "100%",
+      }}
+    />
+  ),
+  bed: (
+    <FaBed
+      style={{
+        padding: "1px",
+        backgroundColor: "white",
+        scale: "1.2",
+        borderRadius: "100%",
+      }}
+    />
+  ),
+  wallet: (
+    <FaWallet
+      style={{
+        padding: "1px",
+        backgroundColor: "white",
+        scale: "1.2",
+        borderRadius: "100%",
+      }}
+    />
+  ),
+  heartBolt: (
+    <FaHeartCircleBolt
+      style={{
+        padding: "1px",
+        backgroundColor: "white",
+        scale: "1.2",
+        borderRadius: "100%",
+      }}
+    />
+  ),
+  moodKid: (
+    <TbMoodKid
+      style={{
+        padding: "1px",
+        backgroundColor: "white",
+        scale: "1.2",
+        borderRadius: "100%",
+      }}
+    />
+  ),
+  gym: (
+    <CgGym
+      style={{
+        padding: "1px",
+        backgroundColor: "white",
+        scale: "1.2",
+        borderRadius: "100%",
+      }}
+    />
+  ),
+  book: (
+    <FaBook
+      style={{
+        padding: "1px",
+        backgroundColor: "white",
+        scale: "1.2",
+        borderRadius: "100%",
+      }}
+    />
+  ),
+  terminal: (
+    <FaTerminal
+      style={{
+        padding: "1px",
+        backgroundColor: "white",
+        scale: "1.2",
+        borderRadius: "100%",
+      }}
+    />
+  ),
+  colorPalette: (
+    <IoColorPaletteOutline
+      style={{
+        padding: "1px",
+        backgroundColor: "white",
+        scale: "1.2",
+        borderRadius: "100%",
+      }}
+    />
+  ),
+  yinYang: (
+    <FaYinYang
+      style={{
+        padding: "1px",
+        backgroundColor: "white",
+        scale: "1.2",
+        borderRadius: "100%",
+      }}
+    />
+  ),
+  musicNote: (
+    <CiMusicNote1
+      style={{
+        padding: "1px",
+        backgroundColor: "white",
+        scale: "1.2",
+        borderRadius: "100%",
+      }}
+    />
+  ),
+  shower: (
+    <FaShower
+      style={{
+        padding: "1px",
+        backgroundColor: "white",
+        scale: "1.2",
+        borderRadius: "100%",
+      }}
+    />
+  ),
+  notes: (
+    <TbNotes
+      style={{
+        padding: "1px",
+        backgroundColor: "white",
+        scale: "1.2",
+        borderRadius: "100%",
+      }}
+    />
+  ),
+  cup: (
+    <RiCupLine
+      style={{
+        padding: "1px",
+        backgroundColor: "white",
+        scale: "1.2",
+        borderRadius: "100%",
+      }}
+    />
+  ),
+  dollar: (
+    <TbCurrencyDollar
+      style={{
+        padding: "1px",
+        backgroundColor: "white",
+        scale: "1.2",
+        borderRadius: "100%",
+      }}
+    />
+  ),
+  heart: (
+    <CiHeart
+      style={{
+        padding: "1px",
+        backgroundColor: "white",
+        scale: "1.2",
+        borderRadius: "100%",
+      }}
+    />
+  ),
+  leaf: (
+    <LuLeaf
+      style={{
+        padding: "1px",
+        backgroundColor: "white",
+        scale: "1.2",
+        borderRadius: "100%",
+      }}
+    />
+  ),
+  console: (
+    <GiConsoleController
+      style={{
+        padding: "1px",
+        backgroundColor: "white",
+        scale: "1.2",
+        borderRadius: "100%",
+      }}
+    />
+  ),
+  bicycle: (
+    <FaBicycle
+      style={{
+        padding: "1px",
+        backgroundColor: "white",
+        scale: "1.2",
+        borderRadius: "100%",
+      }}
+    />
+  ),
 };
 
-
-
-export {habitFormIcons, habitFormIconsJson};
+export { habitFormIcons, habitFormIconsJson };

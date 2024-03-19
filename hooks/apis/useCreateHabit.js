@@ -49,7 +49,6 @@ const useCreateHabit = (defaultIcon, defaultColor) => {
     };
 
     const response = await axios.post("/api/v1/habit/create-habit", payload);
-    console.log(response);
     setLoading(false);
   };
   return {
