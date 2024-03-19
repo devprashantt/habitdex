@@ -1,8 +1,12 @@
+import { NextResponse } from "next/server";
+
 const generateResponse = (statusCode, body) => {
-  return {
-    statusCode: statusCode,
-    body: stringifyBody(body),
-  };
+  return NextResponse.json({
+    status: statusCode
+  },
+    {
+      body: stringifyBody(body),
+    });
 };
 
 const stringifyBody = (body) => {
