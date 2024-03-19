@@ -19,7 +19,9 @@ const Habit = (props) => {
     >
       <div className={styles.main__container}>
         <div className={styles.main__container__child1}>
-          {habitFormIconsJson[props.icon]}
+          <div className={styles.icon__container}>
+            {habitFormIconsJson[props.icon]}
+          </div>
           <div>
             <p>{props.name}</p>
             <p className={styles.description}>{props.description}</p>

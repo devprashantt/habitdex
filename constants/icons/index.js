@@ -113,7 +113,7 @@ const habitFormIconsJson = {
       style={{
         padding: "1px",
         backgroundColor: "white",
-        scale: "1.2",
+        scale: "1.5",
         borderRadius: "100%",
       }}
     />
@@ -123,7 +123,7 @@ const habitFormIconsJson = {
       style={{
         padding: "1px",
         backgroundColor: "white",
-        scale: "1.2",
+        scale: "1.5",
         borderRadius: "100%",
       }}
     />
@@ -133,7 +133,7 @@ const habitFormIconsJson = {
       style={{
         padding: "1px",
         backgroundColor: "white",
-        scale: "1.2",
+        scale: "1.5",
         borderRadius: "100%",
       }}
     />
@@ -143,7 +143,7 @@ const habitFormIconsJson = {
       style={{
         padding: "1px",
         backgroundColor: "white",
-        scale: "1.2",
+        scale: "1.5",
         borderRadius: "100%",
       }}
     />
@@ -153,7 +153,7 @@ const habitFormIconsJson = {
       style={{
         padding: "1px",
         backgroundColor: "white",
-        scale: "1.2",
+        scale: "1.5",
         borderRadius: "100%",
       }}
     />
@@ -163,7 +163,7 @@ const habitFormIconsJson = {
       style={{
         padding: "1px",
         backgroundColor: "white",
-        scale: "1.2",
+        scale: "1.5",
         borderRadius: "100%",
       }}
     />
@@ -173,7 +173,7 @@ const habitFormIconsJson = {
       style={{
         padding: "1px",
         backgroundColor: "white",
-        scale: "1.2",
+        scale: "1.5",
         borderRadius: "100%",
       }}
     />
@@ -183,7 +183,7 @@ const habitFormIconsJson = {
       style={{
         padding: "1px",
         backgroundColor: "white",
-        scale: "1.2",
+        scale: "1.5",
         borderRadius: "100%",
       }}
     />
@@ -193,7 +193,7 @@ const habitFormIconsJson = {
       style={{
         padding: "1px",
         backgroundColor: "white",
-        scale: "1.2",
+        scale: "1.5",
         borderRadius: "100%",
       }}
     />
@@ -203,7 +203,7 @@ const habitFormIconsJson = {
       style={{
         padding: "1px",
         backgroundColor: "white",
-        scale: "1.2",
+        scale: "1.5",
         borderRadius: "100%",
       }}
     />
@@ -213,7 +213,7 @@ const habitFormIconsJson = {
       style={{
         padding: "1px",
         backgroundColor: "white",
-        scale: "1.2",
+        scale: "1.5",
         borderRadius: "100%",
       }}
     />
@@ -223,7 +223,7 @@ const habitFormIconsJson = {
       style={{
         padding: "1px",
         backgroundColor: "white",
-        scale: "1.2",
+        scale: "1.5",
         borderRadius: "100%",
       }}
     />
@@ -233,7 +233,7 @@ const habitFormIconsJson = {
       style={{
         padding: "1px",
         backgroundColor: "white",
-        scale: "1.2",
+        scale: "1.5",
         borderRadius: "100%",
       }}
     />
@@ -243,7 +243,7 @@ const habitFormIconsJson = {
       style={{
         padding: "1px",
         backgroundColor: "white",
-        scale: "1.2",
+        scale: "1.5",
         borderRadius: "100%",
       }}
     />
@@ -253,7 +253,7 @@ const habitFormIconsJson = {
       style={{
         padding: "1px",
         backgroundColor: "white",
-        scale: "1.2",
+        scale: "1.5",
         borderRadius: "100%",
       }}
     />
@@ -263,7 +263,7 @@ const habitFormIconsJson = {
       style={{
         padding: "1px",
         backgroundColor: "white",
-        scale: "1.2",
+        scale: "1.5",
         borderRadius: "100%",
       }}
     />
@@ -273,7 +273,7 @@ const habitFormIconsJson = {
       style={{
         padding: "1px",
         backgroundColor: "white",
-        scale: "1.2",
+        scale: "1.5",
         borderRadius: "100%",
       }}
     />
@@ -283,7 +283,7 @@ const habitFormIconsJson = {
       style={{
         padding: "1px",
         backgroundColor: "white",
-        scale: "1.2",
+        scale: "1.5",
         borderRadius: "100%",
       }}
     />
@@ -293,7 +293,7 @@ const habitFormIconsJson = {
       style={{
         padding: "1px",
         backgroundColor: "white",
-        scale: "1.2",
+        scale: "1.5",
         borderRadius: "100%",
       }}
     />
@@ -303,7 +303,7 @@ const habitFormIconsJson = {
       style={{
         padding: "1px",
         backgroundColor: "white",
-        scale: "1.2",
+        scale: "1.5",
         borderRadius: "100%",
       }}
     />
@@ -313,7 +313,7 @@ const habitFormIconsJson = {
       style={{
         padding: "1px",
         backgroundColor: "white",
-        scale: "1.2",
+        scale: "1.5",
         borderRadius: "100%",
       }}
     />
