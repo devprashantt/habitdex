@@ -1,54 +1,62 @@
 'use client';
 
 // libraries
-import { useState } from 'react';
 import { MdDone } from 'react-icons/md';
-
-// actions
-import addPost from '@/actions/habit/createHabit';
 
 // constants
 import { habitFormIcons, themeColors } from '@/constants';
 
+// hooks
+import useCreateHabit from '@/hooks/apis/useCreateHabit';
+
 export default function CreateHabit() {
-	const [completion, setCompletion] = useState(1);
-	const [icon, setIcon] = useState('pulse');
-	const [color, setColor] = useState(0);
+
+	const {
+		formData,
+		updateName,
+		updateDescription,
+        updateIcon,
+        increaseCompletion,
+		decreaseCompletion,
+		updateColor,
+		loading,
+		handleSubmit
+	} = useCreateHabit("pulse", "red-variant-1");
 
 	return (
 		<div>
-			<form action={addPost}>
+			<form onSubmit={handleSubmit}>
 				<div>
 					<button>close</button>
 					<h2>New Habit</h2>
-					<button type='submit'>
-						<MdDone />
-					</button>
+
+					<button disabled={loading} type='submit'><MdDone /></button>
+
 				</div>
 				<div>
 					<label>Name</label>
 					<br />
-					<input name='name' type='text' />
+					<input name='name' value={formData.name} onChange={(e) => updateName(e.target.value)} type='text' />
 				</div>
 				<div>
 					<label>Description</label>
 					<br />
-					<input name='description' type='text' />
+					<input name='description' value={formData.description} onChange={(e) => updateDescription(e.target.value)} type='text' />
 				</div>
 				<div>
 					<label>Completion per day</label>
 					<div>
-						<input name='completions' type='text' readOnly value={completion + ' /Day'} />
+						<input name='completions' type='text' readOnly value={formData.completion + ' /Day'} />
 						<div>
 							<div
 								onClick={(e) => {
-									setCompletion(Math.max(completion - 1, 1));
+									decreaseCompletion();
 								}}>
 								-
 							</div>
 							<div
 								onClick={(e) => {
-									setCompletion(Math.min(completion + 1, 9));
+									increaseCompletion();
 								}}>
 								+
 							</div>
@@ -60,7 +68,7 @@ export default function CreateHabit() {
 					type='text'
 					name='icon'
 					readOnly
-					value={habitFormIcons?.find((iconDetail) => iconDetail?.name === icon).name}
+					value={habitFormIcons?.find((iconDetail) => iconDetail?.name === formData.icon).name}
 				/>
 				<div>
 					{habitFormIcons?.map((iconDetail, index) => {
@@ -68,7 +76,7 @@ export default function CreateHabit() {
 							<div
 								key={index}
 								onClick={(e) => {
-									setIcon(iconDetail?.name);
+									updateIcon(iconDetail?.name);
 								}}>
 								{iconDetail?.icon}
 							</div>
@@ -81,7 +89,7 @@ export default function CreateHabit() {
 					type='text'
 					name='color'
 					readOnly
-					value={themeColors[color].name}
+					value={formData.color}
 					style={{
 						visibility: 'hidden',
 					}}
@@ -92,7 +100,7 @@ export default function CreateHabit() {
 							<div
 								key={index}
 								onClick={(e) => {
-									setColor(index);
+									updateColor(color.name);
 								}}
 								style={{
 									width: '20px',
