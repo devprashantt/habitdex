@@ -1,9 +1,6 @@
-import CreateHabit from "@/containers/Forms/CreateHabit";
 import RegisterUser from "@/app/home/components/RegisterUser/RegisterUser";
 import { UserButton, currentUser } from "@clerk/nextjs";
-import "./home.module.scss";
-import { Suspense } from "react";
-import AllHabit from "./components/Habits/AllHabit";
+import HabitControls from "./components/Habits/HabitControls";
 
 const page = async () => {
   const user = await currentUser();
@@ -11,14 +8,8 @@ const page = async () => {
     <div>
       <RegisterUser />
       <h2>{user?.firstName}</h2>
-      <Suspense fallback={<p>Loading feed...</p>}>
-        <UserButton afterSignOutUrl="/"></UserButton>
-      </Suspense>
-      {/* <CreateHabit /> */}
-      <p>All Habits</p>
-      <Suspense fallback={<p>Loading feed...</p>}>
-        <AllHabit />
-      </Suspense>
+      <UserButton afterSignOutUrl="/"></UserButton>
+      <HabitControls />
     </div>
   );
 };

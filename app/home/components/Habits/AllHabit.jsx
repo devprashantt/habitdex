@@ -6,7 +6,7 @@ import { resultPerPage } from "@/constants";
 import styles from "@/app/home/home.module.scss";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
-const AllHabit = () => {
+const AllHabit = (props) => {
   // const currentPage = 1;
   const [isLoading, setIsLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
@@ -24,6 +24,12 @@ const AllHabit = () => {
   useEffect(() => {
     FetchData();
   }, [currentPage]);
+  useEffect(() => {
+    if (habits.length === resultPerPage) {
+    } else {
+      FetchData();
+    }
+  }, [props.event]);
 
   return (
     <div>

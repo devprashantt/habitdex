@@ -1,14 +1,19 @@
 "use client";
+import { habitFormIcons, themeColors } from "@/constants";
 import axios from "axios";
 import { useState } from "react";
 
-const useCreateHabit = (defaultIcon, defaultColor) => {
+const useCreateHabit = (setEvent) => {
+  const randIcon =
+    habitFormIcons[Math.floor(Math.random() * habitFormIcons.length)].name;
+  const randColor =
+    themeColors[Math.floor(Math.random() * themeColors.length)].name;
   const [formData, setFormData] = useState({
     name: "",
     description: "",
-    icon: defaultIcon,
+    icon: randIcon,
     completion: 1,
-    color: defaultColor,
+    color: randColor,
   });
 
   const updateName = (newName) => {
@@ -47,8 +52,18 @@ const useCreateHabit = (defaultIcon, defaultColor) => {
       color: formData.color,
       contributions: [],
     };
+    const randIcon =
+      habitFormIcons[Math.floor(Math.random() * habitFormIcons.length)].name;
+    const randColor =
+      themeColors[Math.floor(Math.random() * themeColors.length)].name;
+    formData.name = "";
+    formData.description = "";
+    formData.icon = randIcon;
+    formData.completion = 1;
+    formData.color = randColor;
 
     const response = await axios.post("/api/v1/habit/create-habit", payload);
+    setEvent((prev) => prev + 1);
     setLoading(false);
   };
   return {
