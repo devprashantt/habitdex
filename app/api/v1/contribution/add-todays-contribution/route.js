@@ -6,7 +6,8 @@ import DB_MODELS from "@/utils/modelsEnum";
 import connectDB from "@/lib/db/configs/connection";
 
 // response
-import { created } from "@/utils/responses";
+import { created, internalServerError } from "@/utils/responses";
+import { findOne } from "@/lib/db/repository";
 
 export async function POST(request) {
   // get request data, connect to database and auth
@@ -19,21 +20,25 @@ export async function POST(request) {
   if (!userId) {
     return unauthorized();
   }
-  const User = await DB_MODELS.USER.findOne({ clerk_user_id: userId });
-  if (!User) {
-    return unauthorized();
-  }
+
+  const [User, userResultError] = await findOne({
+    collection: DB_MODELS.USER,
+    query: {
+      clerk_user_id: userId,
+    },
+  });
+  if (userResultError) return internalServerError(userResultError);
 
   // find the chart
   const charts = await DB_MODELS.CHART.find({
     _id: habitId,
   });
-  // console.log(charts,habitId,name);
-  var contribs = await charts[0].contributions;
+
+  let chartDetails = await charts[0].contributions;
   const date = new Date();
   const dateOnly = new Date(date.toDateString());
 
-  // find the contribution for current day and if it doesnt exist create a new else increase the count by 1
+  // find the contribution for current day and if it doesn't exist create a new else increase the count by 1
   const currentDayContribution = await DB_MODELS.CONTRIBUTION.findOne({
     user_id: User._id,
     name: name,
@@ -41,8 +46,8 @@ export async function POST(request) {
   });
 
   if (currentDayContribution) {
-    currentDayContribution.count = currentDayContribution.count + 1;
-    currentDayContribution.save();
+    currentDayContribution.count += 1;
+    await currentDayContribution.save();
   } else {
     const newContribution = new DB_MODELS.CONTRIBUTION({
       name: name,
@@ -50,11 +55,19 @@ export async function POST(request) {
       count: 1,
       user_id: User._id,
     });
-    contribs = [...contribs, newContribution];
-    charts[0].contributions = contribs;
-    // console.log(newContribution);
-    await charts[0].save();
+
+    await charts[0].updateOne({
+      $push: {
+        contributions: newContribution._id,
+      },
+    });
+
     await newContribution.save();
+    await charts[0].save();
   }
-  return created();
+  return created(
+    "Contribution added successfully",
+    { status: 201 },
+    { contribution: currentDayContribution },
+  );
 }
