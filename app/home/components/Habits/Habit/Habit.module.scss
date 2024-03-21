@@ -1,0 +1,54 @@
+.main__container__wrapper {
+    border-radius: 6px;
+    width: fit-content;
+    padding: 10px 20px 10px 20px;
+}
+
+.main__container {
+    width: 20rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.main__container__child1 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+}
+
+.icon__container {
+    transition-duration: 200ms;
+
+    &:hover {
+        transition-duration: 200ms;
+        scale: 1.2;
+    }
+}
+
+.description {
+    font-size: small;
+}
+
+.addContribution {
+    font-size: large;
+    border-radius: 100%;
+    border: 1px solid white;
+    background-color: rgba($color: #000000, $alpha: 0.05);
+    width: 20px;
+    height: 20px;
+    scale: 1.2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition-duration: 200ms;
+    cursor: pointer;
+    padding: 2px;
+
+    &:hover {
+        background-color: rgba($color: #000000, $alpha: 0.01);
+        transition-duration: 200ms;
+        scale: 1.5;
+    }
+}

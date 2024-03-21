@@ -1,48 +1,22 @@
 "use client";
-// hooks and modules
-import { useEffect, useState } from "react";
-import axios from "axios";
 
 // components and icons
-import Habit from "./Habit";
+import Habit from "../Habit/Habit";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
 // misc
 import { resultPerPage } from "@/constants";
-import styles from "@/app/home/home.module.scss";
+import styles from "./AllHabit.module.scss";
+import useAllHabits from "@/hooks/apis/useAllHabits";
 
 const AllHabit = (props) => {
-  // const currentPage = 1;
-  const [isLoading, setIsLoading] = useState(false);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [habits, setHabit] = useState([]);
-  const FetchData = async () => {
-    setIsLoading(true);
-    const response = await axios.post("/api/v1/habit/get-habits", {
-      skip: currentPage,
-    });
-    const data = await response.data;
-    setHabit(data);
-    setIsLoading(false);
-    // console.log(data);
-  };
-  useEffect(() => {
-    FetchData();
-  }, [currentPage]);
-  useEffect(() => {
-    if (habits.length === resultPerPage) {
-    } else {
-      FetchData();
-    }
-  }, [props.event]);
-
+  const [isLoading, currentPage, habits, setCurrentPage] = useAllHabits();
   return (
     <div>
       <div className={styles.habit__container}>
         {!isLoading
           ? habits.map((habit, index) => {
               return (
-                // color contributions_per_day description icon name _id contributions
                 <Habit
                   key={index}
                   name={habit.name}

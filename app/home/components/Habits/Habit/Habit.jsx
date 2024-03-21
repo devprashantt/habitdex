@@ -5,7 +5,7 @@ import axios from "axios";
 import { habitFormIconsJson, themeColorJson } from "@/constants";
 
 // styles
-import styles from "@/app/home/home.module.scss";
+import styles from "./Habit.module.scss";
 
 const Habit = (props) => {
   const color = themeColorJson[props.color];
