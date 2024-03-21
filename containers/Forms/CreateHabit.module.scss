@@ -1,0 +1,120 @@
+.visible__form {
+  position: absolute;
+  background-color: white;
+  z-index: 10;
+  display: block;
+  padding: 20px 30px;
+  border-radius: 5px;
+  border: 1px solid black;
+}
+.hidden__form {
+  display: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: 1px solid black;
+}
+.top__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.input__box {
+  width: 100%;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  margin-top: 2px;
+  border-top: 0px;
+  border-right: 0px;
+  padding-inline-start: 4px;
+  border-radius: 0px 0px 0px 5px;
+  outline: none;
+  height: 1.7rem;
+}
+.form__container {
+  width: 20rem;
+}
+.input__container {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.main__container {
+  display: flex;
+  justify-content: center;
+}
+.completion__div {
+  display: flex;
+  gap: 2px;
+  margin-bottom: 10px;
+  color: white;
+  div {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    div {
+      display: flex;
+      justify-content: center;
+      cursor: pointer;
+      align-items: center;
+      width: 1.7rem;
+      height: 1.7rem;
+      background-color: #1f2937;
+    }
+  }
+}
+.icon__container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 18px;
+  div {
+    height: 30px;
+    width: 30px;
+    padding: 5px;
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.1);
+    }
+    * {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+.selector__container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.color__container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 18px;
+  div {
+    height: 30px;
+    width: 30px;
+    padding: 5px;
+    border-radius: 100%;
+    transition-duration: 200ms;
+    &:hover {
+      filter: brightness(110%);
+      scale: 1.1;
+    }
+  }
+}
+.close__button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  padding: 2px;
+  border: 1px solid black;
+  border-radius: 100%;
+  cursor: pointer;
+  transition-duration: 200ms;
+  &:hover {
+    scale: 1.2;
+  }
+}

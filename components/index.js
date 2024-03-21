@@ -1,3 +1,3 @@
-import { SimpleInput } from './Inputs';
+import { SimpleInput } from "./Inputs";
 
 export { SimpleInput };

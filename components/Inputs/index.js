@@ -1,3 +1,3 @@
-import SimpleInput from './SimpleInput/SimpleInput';
+import SimpleInput from "./SimpleInput/SimpleInput";
 
 export { SimpleInput };
