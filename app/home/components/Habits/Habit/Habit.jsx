@@ -6,15 +6,12 @@ import { habitFormIconsJson, themeColorJson } from "@/constants";
 
 // styles
 import styles from "./Habit.module.scss";
+import useHabit from "@/hooks/apis/useHabit";
 
 const Habit = (props) => {
   const color = themeColorJson[props.color];
-  const handleSubmit = async () => {
-    const response = await axios.post(
-      "/api/v1/contribution/add-todays-contribution",
-      { name: props.name, habitId: props._id },
-    );
-  };
+  const [handleSubmit] = useHabit(props.name, props._id);
+
   return (
     <div
       className={styles.main__container__wrapper}
