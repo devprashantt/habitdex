@@ -1,6 +1,9 @@
 "use client";
+// hooks
+import { Suspense, useState } from "react";
+
+// components
 import CreateHabit from "@/containers/Forms/CreateHabit";
-import React, { Suspense, useState } from "react";
 import AllHabit from "./AllHabit";
 
 const HabitControls = () => {

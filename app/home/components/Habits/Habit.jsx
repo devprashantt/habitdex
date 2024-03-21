@@ -1,13 +1,18 @@
-import { habitFormIconsJson, themeColorJson } from "@/constants";
-import styles from "@/app/home/home.module.scss";
+// module imports
 import axios from "axios";
+
+// Icons
+import { habitFormIconsJson, themeColorJson } from "@/constants";
+
+// styles
+import styles from "@/app/home/home.module.scss";
 
 const Habit = (props) => {
   const color = themeColorJson[props.color];
   const handleSubmit = async () => {
     const response = await axios.post(
-      "/api/v1/contribution/addContributionToday",
-      { name: props.name },
+      "/api/v1/contribution/add-todays-contribution",
+      { name: props.name, habitId: props._id },
     );
   };
   return (

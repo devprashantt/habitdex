@@ -1,7 +1,10 @@
 "use client";
-import { habitFormIcons, themeColors } from "@/constants";
-import axios from "axios";
+// hooks
 import { useState } from "react";
+// icon and colors
+import { habitFormIcons, themeColors } from "@/constants";
+// modules
+import axios from "axios";
 
 const useCreateHabit = (setEvent) => {
   const randIcon =

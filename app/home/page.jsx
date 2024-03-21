@@ -1,6 +1,11 @@
-import RegisterUser from "@/app/home/components/RegisterUser/RegisterUser";
+// auth
 import { UserButton, currentUser } from "@clerk/nextjs";
+
+// components
+import RegisterUser from "@/app/home/components/RegisterUser/RegisterUser";
 import HabitControls from "./components/Habits/HabitControls";
+
+// styles
 import styles from "./home.module.scss";
 
 const page = async () => {

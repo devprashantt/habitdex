@@ -1,12 +1,18 @@
-import connectDB from "@/lib/db/configs/connection";
-import { Contribution } from "@/lib/db/models/contribution.model";
-import DB_MODELS from "@/utils/modelsEnum";
-import { created } from "@/utils/responses";
+// auth
 import { auth } from "@clerk/nextjs";
 
+// db models
+import DB_MODELS from "@/utils/modelsEnum";
+import connectDB from "@/lib/db/configs/connection";
+
+// response
+import { created } from "@/utils/responses";
+
 export async function POST(request) {
+  // get request data, connect to database and auth
   const data = await request.json();
   const name = data.name;
+  const habitId = data.habitId;
   await connectDB();
 
   const { userId } = auth();
@@ -17,13 +23,21 @@ export async function POST(request) {
   if (!User) {
     return unauthorized();
   }
-  const charts = await DB_MODELS.CHART.find({ user_id: User._id, name: name });
+
+  // find the chart
+  const charts = await DB_MODELS.CHART.find({
+    _id: habitId,
+  });
+  // console.log(charts,habitId,name);
   var contribs = await charts[0].contributions;
-  const tmp = new Date();
-  const date = tmp.getDate() + "-" + tmp.getMonth() + "-" + tmp.getFullYear();
+  const date = new Date();
+  const dateOnly = new Date(date.toDateString());
+
+  // find the contribution for current day and if it doesnt exist create a new else increase the count by 1
   const currentDayContribution = await DB_MODELS.CONTRIBUTION.findOne({
+    user_id: User._id,
     name: name,
-    date: date,
+    date: dateOnly,
   });
 
   if (currentDayContribution) {
@@ -32,13 +46,14 @@ export async function POST(request) {
   } else {
     const newContribution = new DB_MODELS.CONTRIBUTION({
       name: name,
-      date: date,
+      date: dateOnly,
       count: 1,
+      user_id: User._id,
     });
     contribs = [...contribs, newContribution];
     charts[0].contributions = contribs;
+    // console.log(newContribution);
     await charts[0].save();
-
     await newContribution.save();
   }
   return created();

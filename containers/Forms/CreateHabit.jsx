@@ -1,15 +1,14 @@
 "use client";
+// hooks
+import useCreateHabit from "@/hooks/apis/useCreateHabit";
+import useToggleState from "@/hooks/useToggleState";
 
-// libraries
+// icons
 import { MdDone } from "react-icons/md";
 import { IoCloseSharp } from "react-icons/io5";
 
 // constants
 import { habitFormIcons, themeColors } from "@/constants";
-
-// hooks
-import useCreateHabit from "@/hooks/apis/useCreateHabit";
-import useToggleState from "@/hooks/useToggleState";
 
 import styles from "./CreateHabit.module.scss";
 

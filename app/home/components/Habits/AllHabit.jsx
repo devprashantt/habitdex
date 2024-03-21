@@ -1,10 +1,15 @@
 "use client";
-import { Suspense, useEffect, useState } from "react";
-import Habit from "./Habit";
+// hooks and modules
+import { useEffect, useState } from "react";
 import axios from "axios";
+
+// components and icons
+import Habit from "./Habit";
+import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+
+// misc
 import { resultPerPage } from "@/constants";
 import styles from "@/app/home/home.module.scss";
-import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
 const AllHabit = (props) => {
   // const currentPage = 1;

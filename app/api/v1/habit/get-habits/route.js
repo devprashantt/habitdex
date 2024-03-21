@@ -1,8 +1,13 @@
-import { resultPerPage } from "@/constants";
-import connectDB from "@/lib/db/configs/connection";
-import DB_MODELS from "@/utils/modelsEnum";
-import { unauthorized } from "@/utils/responses";
+// auth
 import { auth } from "@clerk/nextjs";
+
+// db models
+import DB_MODELS from "@/utils/modelsEnum";
+import connectDB from "@/lib/db/configs/connection";
+
+// other imports
+import { resultPerPage } from "@/constants";
+import { unauthorized } from "@/utils/responses";
 
 export async function POST(request) {
   try {

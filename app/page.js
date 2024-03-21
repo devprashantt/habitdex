@@ -1,6 +1,11 @@
-import Link from "next/link";
-import styles from "./page.module.scss";
+// auth
 import { SignedIn, SignedOut, currentUser } from "@clerk/nextjs";
+
+// modules
+import Link from "next/link";
+
+// components and styles
+import styles from "./page.module.scss";
 import PrimaryButton from "@/components/Buttons/PrimaryButton/PrimaryButton";
 
 export default async function Home() {

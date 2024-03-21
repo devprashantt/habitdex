@@ -1,6 +1,11 @@
-import connectDB from "@/lib/db/configs/connection";
-import DB_MODELS from "@/utils/modelsEnum";
+// auth
 import { auth, currentUser } from "@clerk/nextjs";
+
+// db models
+import DB_MODELS from "@/utils/modelsEnum";
+import connectDB from "@/lib/db/configs/connection";
+
+// responses
 import { unauthorized } from "@/utils/responses";
 
 export async function GET() {
