@@ -34,10 +34,10 @@ export async function POST(request) {
         user_id: UserResult._id,
       },
       options: {
-        skip: (skip-1)*resultPerPage,
-        limit: resultPerPage
-      }
-    })
+        skip: (skip - 1) * resultPerPage,
+        limit: resultPerPage,
+      },
+    });
     return Response.json(ChartResult);
   } catch (e) {
     console.log(e);

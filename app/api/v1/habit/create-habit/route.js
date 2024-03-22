@@ -12,7 +12,7 @@ import { findOne, insertOne } from "@/lib/db/repository";
 export async function POST(request) {
   try {
     const data = await request.json();
-    
+
     await connectDB();
     const { userId } = auth();
     if (!userId) {
@@ -24,7 +24,7 @@ export async function POST(request) {
         clerk_user_id: userId,
       },
     });
-    
+
     if (!UserResult) {
       return unauthorized();
     }
@@ -38,8 +38,8 @@ export async function POST(request) {
         contributions_per_day: data.contributions_per_day,
         contribs: [],
         color: data.color,
-      }
-    })
+      },
+    });
     await UserResult.updateOne({
       $push: {
         charts: newChart._id,
@@ -47,7 +47,7 @@ export async function POST(request) {
     });
     return created();
   } catch (e) {
-    console.log(e)
+    console.log(e);
     return badRequest();
   }
 }

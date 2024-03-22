@@ -16,13 +16,13 @@ export async function GET() {
   if (!userId) {
     return unauthorized("You must be signed in to create a user");
   }
-  
+
   const [UserResult, userResultError] = await findOne({
     collection: DB_MODELS.USER,
     query: {
       clerk_user_id: userId,
     },
-  })
+  });
 
   if (!UserResult) {
     const fullName =
@@ -35,7 +35,7 @@ export async function GET() {
         clerk_user_id: user.id,
         charts: [],
       },
-    })
+    });
   }
   return new Response("OK", { status: 200 });
 }

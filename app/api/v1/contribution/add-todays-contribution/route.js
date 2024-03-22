@@ -35,7 +35,7 @@ export async function POST(request) {
     query: {
       _id: habitId,
     },
-  })
+  });
 
   let chartDetails = await chartsResult.contributions;
   const date = new Date();
@@ -48,8 +48,8 @@ export async function POST(request) {
       name: name,
       date: dateOnly,
     },
-  })
-  
+  });
+
   // console.log(currentDayContribution)
   if (currentDayContribution) {
     currentDayContribution.count += 1;
@@ -63,14 +63,13 @@ export async function POST(request) {
         count: 1,
         user_id: UserResult._id,
       },
-    })
-    
+    });
+
     await chartsResult.updateOne({
       $push: {
         contributions: newContributionResult._id,
       },
     });
-
   }
   return created(
     "Contribution added successfully",
