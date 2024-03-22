@@ -12,7 +12,7 @@ import useAllHabits from "@/hooks/apis/useAllHabits";
 const AllHabit = (props) => {
   const [isLoading, currentPage, habits, setCurrentPage] = useAllHabits();
   return (
-    <div>
+    <div className={styles.all__habits}>
       <div className={styles.habit__container}>
         {!isLoading
           ? habits.map((habit, index) => {
@@ -47,7 +47,6 @@ const AllHabit = (props) => {
       </div>
 
       <footer className={styles.footer}>
-        <div className={styles.page__container}>
           <button
             disabled={currentPage === 1}
             onClick={(e) => setCurrentPage((prev) => Math.max(prev - 1, 1))}
@@ -61,7 +60,6 @@ const AllHabit = (props) => {
           >
             <IoIosArrowForward />
           </button>
-        </div>
       </footer>
     </div>
   );
