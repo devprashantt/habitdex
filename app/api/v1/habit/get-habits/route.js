@@ -7,27 +7,39 @@ import connectDB from "@/lib/db/configs/connection";
 
 // other imports
 import { resultPerPage } from "@/constants";
-import { unauthorized } from "@/utils/responses";
+import { sendData, unauthorized } from "@/utils/responses";
+import { findMany, findOne } from "@/lib/db/repository";
 
 export async function POST(request) {
   try {
     const data = await request.json();
     const skip = data.skip;
-    const limit = resultPerPage;
     await connectDB();
     const { userId } = auth();
     if (!userId) {
       return unauthorized();
     }
-    const User = await DB_MODELS.USER.findOne({ clerk_user_id: userId });
-    if (!User) {
-      return unauthorized();
-    }
-    const charts = await DB_MODELS.CHART.find({ user_id: User._id })
-      .skip((skip - 1) * limit)
-      .limit(limit);
-    return Response.json(charts);
+    const [userResult, userResultError] = await findOne({
+      collection: DB_MODELS.USER,
+      query: {
+        clerk_user_id: userId,
+      },
+    });
+    if (userResultError) return internalServerError(userResultError);
+    
+    const [chartResult, chartsResultError] = await findMany({
+      collection: DB_MODELS.CHART,
+      query: {
+        user_id: userResult._id,
+      },
+      options: {
+        skip: (skip - 1) * resultPerPage,
+        limit: resultPerPage,
+      },
+    });
+    if (chartsResultError) return internalServerError(chartsResultError);
+    return sendData(chartResult);
   } catch (e) {
-    console.log(e);
+    return internalServerError(e);
   }
 }

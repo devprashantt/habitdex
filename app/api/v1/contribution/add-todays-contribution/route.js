@@ -6,7 +6,8 @@ import DB_MODELS from "@/utils/modelsEnum";
 import connectDB from "@/lib/db/configs/connection";
 
 // response
-import { created } from "@/utils/responses";
+import { created, internalServerError } from "@/utils/responses";
+import { findOne, insertOne } from "@/lib/db/repository";
 
 export async function POST(request) {
   // get request data, connect to database and auth
@@ -19,42 +20,65 @@ export async function POST(request) {
   if (!userId) {
     return unauthorized();
   }
-  const User = await DB_MODELS.USER.findOne({ clerk_user_id: userId });
-  if (!User) {
-    return unauthorized();
-  }
+
+  const [userResult, userResultError] = await findOne({
+    collection: DB_MODELS.USER,
+    query: {
+      clerk_user_id: userId,
+    },
+  });
+  if (userResultError) return internalServerError(userResultError);
 
   // find the chart
-  const charts = await DB_MODELS.CHART.find({
-    _id: habitId,
+  const [chartsResult, chartsResultError] = await findOne({
+    collection: DB_MODELS.CHART,
+    query: {
+      _id: habitId,
+    },
   });
-  // console.log(charts,habitId,name);
-  var contribs = await charts[0].contributions;
+  if (chartsResultError) return internalServerError(chartsResultError);
+
+  let chartDetails = await chartsResult.contributions;
   const date = new Date();
-  const dateOnly = new Date(date.toDateString());
-
-  // find the contribution for current day and if it doesnt exist create a new else increase the count by 1
-  const currentDayContribution = await DB_MODELS.CONTRIBUTION.findOne({
-    user_id: User._id,
-    name: name,
-    date: dateOnly,
-  });
-
-  if (currentDayContribution) {
-    currentDayContribution.count = currentDayContribution.count + 1;
-    currentDayContribution.save();
-  } else {
-    const newContribution = new DB_MODELS.CONTRIBUTION({
-      name: name,
-      date: dateOnly,
-      count: 1,
-      user_id: User._id,
+  const dateOnly = new Date(date.toLocaleDateString());
+  // find the contribution for current day and if it doesn't exist create a new else increase the count by 1
+  const [currentDayContributionResult, currentDayContributionError] =
+    await findOne({
+      collection: DB_MODELS.CONTRIBUTION,
+      query: {
+        user_id: userResult._id,
+        name: name,
+        date: dateOnly,
+      },
     });
-    contribs = [...contribs, newContribution];
-    charts[0].contributions = contribs;
-    // console.log(newContribution);
-    await charts[0].save();
-    await newContribution.save();
+  if (currentDayContributionError)
+    return internalServerError(currentDayContributionError);
+
+  // console.log(currentDayContributionResult)
+  if (currentDayContributionResult) {
+    currentDayContributionResult.count += 1;
+    await currentDayContributionResult.save();
+  } else {
+    const [newContributionResult, newContributionError] = await insertOne({
+      model: DB_MODELS.CONTRIBUTION,
+      data: {
+        name: name,
+        date: dateOnly,
+        count: 1,
+        user_id: userResult._id,
+      },
+    });
+    if (newContributionError) return internalServerError(newContributionError);
+
+    await chartsResult.updateOne({
+      $push: {
+        contributions: newContributionResult._id,
+      },
+    });
   }
-  return created();
+  return created(
+    "Contribution added successfully",
+    { status: 201 },
+    { contribution: currentDayContributionResult },
+  );
 }

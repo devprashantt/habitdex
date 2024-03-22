@@ -6,7 +6,8 @@ import DB_MODELS from "@/utils/modelsEnum";
 import connectDB from "@/lib/db/configs/connection";
 
 // responses
-import { unauthorized } from "@/utils/responses";
+import { ok, unauthorized } from "@/utils/responses";
+import { findOne, insertOne } from "@/lib/db/repository";
 
 export async function GET() {
   await connectDB();
@@ -15,18 +16,27 @@ export async function GET() {
   if (!userId) {
     return unauthorized("You must be signed in to create a user");
   }
-  const individual = await DB_MODELS.USER.findOne({ clerk_user_id: userId });
 
-  if (!individual) {
+  const [userResult, userResultError] = await findOne({
+    collection: DB_MODELS.USER,
+    query: {
+      clerk_user_id: userId,
+    },
+  });
+
+  if (!userResult) {
     const fullName =
       user.firstName + (user.lastName ? " " + user.lastName : "");
-    const new_individual = new DB_MODELS.USER({
-      email: user.emailAddresses[0].emailAddress,
-      name: fullName,
-      clerk_user_id: user.id,
-      charts: [],
+    const [newUserResult, newUserResultError] = insertOne({
+      collection: DB_MODELS.USER,
+      data: {
+        email: user.emailAddresses[0].emailAddress,
+        name: fullName,
+        clerk_user_id: user.id,
+        charts: [],
+      },
     });
-    await new_individual.save();
+    if (newUserResultError) return internalServerError(newUserResultError);
   }
-  return new Response("OK", { status: 200 });
+  return ok();
 }
