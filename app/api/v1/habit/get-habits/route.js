@@ -19,19 +19,19 @@ export async function POST(request) {
     if (!userId) {
       return unauthorized();
     }
-    const [UserResult, userResultError] = await findOne({
-      collection: DB_MODELS.UserResult,
+    const [userResult, userResultError] = await findOne({
+      collection: DB_MODELS.USER,
       query: {
         clerk_user_id: userId,
       },
     });
-    if (!UserResult) {
+    if (!userResult) {
       return unauthorized();
     }
     const [ChartResult, chartsResultError] = await findMany({
       collection: DB_MODELS.CHART,
       query: {
-        user_id: UserResult._id,
+        user_id: userResult._id,
       },
       options: {
         skip: (skip - 1) * resultPerPage,

@@ -17,17 +17,17 @@ export async function GET() {
     return unauthorized("You must be signed in to create a user");
   }
 
-  const [UserResult, userResultError] = await findOne({
+  const [userResult, userResultError] = await findOne({
     collection: DB_MODELS.USER,
     query: {
       clerk_user_id: userId,
     },
   });
 
-  if (!UserResult) {
+  if (!userResult) {
     const fullName =
       user.firstName + (user.lastName ? " " + user.lastName : "");
-    const [newUser, newUserResultError] = insertOne({
+    const [newUserResult, newUserResultError] = insertOne({
       collection: DB_MODELS.USER,
       data: {
         email: user.emailAddresses[0].emailAddress,

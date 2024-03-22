@@ -18,31 +18,31 @@ export async function POST(request) {
     if (!userId) {
       return unauthorized();
     }
-    const [UserResult, userResultError] = await findOne({
-      collection: DB_MODELS.UserResult,
+    const [userResult, userResultError] = await findOne({
+      collection: DB_MODELS.USER,
       query: {
         clerk_user_id: userId,
       },
     });
 
-    if (!UserResult) {
+    if (!userResult) {
       return unauthorized();
     }
-    const [newChart, newChartResultError] = await insertOne({
+    const [newChartResult, newChartResultError] = await insertOne({
       model: DB_MODELS.CHART,
       data: {
         name: data.name,
         description: data.description,
-        user_id: UserResult._id,
+        user_id: userResult._id,
         icon: data.icon,
         contributions_per_day: data.contributions_per_day,
         contribs: [],
         color: data.color,
       },
     });
-    await UserResult.updateOne({
+    await userResult.updateOne({
       $push: {
-        charts: newChart._id,
+        charts: newChartResult._id,
       },
     });
     return created();

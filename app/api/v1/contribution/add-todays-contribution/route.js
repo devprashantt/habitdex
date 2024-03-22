@@ -21,7 +21,7 @@ export async function POST(request) {
     return unauthorized();
   }
 
-  const [UserResult, userResultError] = await findOne({
+  const [userResult, userResultError] = await findOne({
     collection: DB_MODELS.USER,
     query: {
       clerk_user_id: userId,
@@ -41,19 +41,19 @@ export async function POST(request) {
   const date = new Date();
   const dateOnly = new Date(date.toLocaleDateString());
   // find the contribution for current day and if it doesn't exist create a new else increase the count by 1
-  const [currentDayContribution, currentDayContributionError] = await findOne({
+  const [currentDayContributionResult, currentDayContributionError] = await findOne({
     collection: DB_MODELS.CONTRIBUTION,
     query: {
-      user_id: UserResult._id,
+      user_id: userResult._id,
       name: name,
       date: dateOnly,
     },
   });
 
-  // console.log(currentDayContribution)
-  if (currentDayContribution) {
-    currentDayContribution.count += 1;
-    await currentDayContribution.save();
+  // console.log(currentDayContributionResult)
+  if (currentDayContributionResult) {
+    currentDayContributionResult.count += 1;
+    await currentDayContributionResult.save();
   } else {
     const [newContributionResult, newContributionError] = await insertOne({
       model: DB_MODELS.CONTRIBUTION,
@@ -61,7 +61,7 @@ export async function POST(request) {
         name: name,
         date: dateOnly,
         count: 1,
-        user_id: UserResult._id,
+        user_id: userResult._id,
       },
     });
 
@@ -74,6 +74,6 @@ export async function POST(request) {
   return created(
     "Contribution added successfully",
     { status: 201 },
-    { contribution: currentDayContribution },
+    { contribution: currentDayContributionResult },
   );
 }
