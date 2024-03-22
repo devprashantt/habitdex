@@ -4,12 +4,21 @@ import { auth } from "@clerk/nextjs";
 // db models
 import DB_MODELS from "@/utils/modelsEnum";
 import connectDB from "@/lib/db/configs/connection";
+import logger from "@/lib/services/winston";
 
 // response
 import { created, internalServerError } from "@/utils/responses";
 import { findOne, insertOne } from "@/lib/db/repository";
 
 export async function POST(request) {
+  logger.log({
+    level: "info",
+    message: "creating a new user",
+    meta: {
+      route: "create-user",
+    },
+  });
+
   // get request data, connect to database and auth
   const data = await request.json();
   const name = data.name;
