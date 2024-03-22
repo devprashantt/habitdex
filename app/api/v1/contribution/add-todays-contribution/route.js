@@ -7,7 +7,7 @@ import connectDB from "@/lib/db/configs/connection";
 
 // response
 import { created, internalServerError } from "@/utils/responses";
-import { findOne } from "@/lib/db/repository";
+import { findOne, insert, insertOne } from "@/lib/db/repository";
 
 export async function POST(request) {
   // get request data, connect to database and auth
@@ -30,40 +30,47 @@ export async function POST(request) {
   if (userResultError) return internalServerError(userResultError);
 
   // find the chart
-  const charts = await DB_MODELS.CHART.find({
-    _id: habitId,
-  });
+  const [charts, chartsResultError] = await findOne({
+    collection: DB_MODELS.CHART,
+    query: {
+      _id: habitId,
+    },
+  })
 
-  let chartDetails = await charts[0].contributions;
+  let chartDetails = await charts.contributions;
   const date = new Date();
-  const dateOnly = new Date(date.toDateString());
-
+  const dateOnly = new Date(date.toLocaleDateString());
   // find the contribution for current day and if it doesn't exist create a new else increase the count by 1
-  const currentDayContribution = await DB_MODELS.CONTRIBUTION.findOne({
-    user_id: User._id,
-    name: name,
-    date: dateOnly,
-  });
-
+  const [currentDayContribution, currentDayContributionError] = await findOne({
+    collection: DB_MODELS.CONTRIBUTION,
+    query: {
+      user_id: User._id,
+      name: name,
+      date: dateOnly,
+    },
+  })
+  
+  // console.log(currentDayContribution)
   if (currentDayContribution) {
     currentDayContribution.count += 1;
     await currentDayContribution.save();
   } else {
-    const newContribution = new DB_MODELS.CONTRIBUTION({
-      name: name,
-      date: dateOnly,
-      count: 1,
-      user_id: User._id,
-    });
-
-    await charts[0].updateOne({
+    const [newContribution, newContributionError] = await insertOne({
+      model: DB_MODELS.CONTRIBUTION,
+      data: {
+        name: name,
+        date: dateOnly,
+        count: 1,
+        user_id: User._id,
+      },
+    })
+    
+    await charts.updateOne({
       $push: {
         contributions: newContribution._id,
       },
     });
 
-    await newContribution.save();
-    await charts[0].save();
   }
   return created(
     "Contribution added successfully",

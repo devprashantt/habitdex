@@ -8,24 +8,36 @@ import connectDB from "@/lib/db/configs/connection";
 // other imports
 import { resultPerPage } from "@/constants";
 import { unauthorized } from "@/utils/responses";
+import { findMany, findOne } from "@/lib/db/repository";
 
 export async function POST(request) {
   try {
     const data = await request.json();
     const skip = data.skip;
-    const limit = resultPerPage;
     await connectDB();
     const { userId } = auth();
     if (!userId) {
       return unauthorized();
     }
-    const User = await DB_MODELS.USER.findOne({ clerk_user_id: userId });
+    const [User, userResultError] = await findOne({
+      collection: DB_MODELS.USER,
+      query: {
+        clerk_user_id: userId,
+      },
+    });
     if (!User) {
       return unauthorized();
     }
-    const charts = await DB_MODELS.CHART.find({ user_id: User._id })
-      .skip((skip - 1) * limit)
-      .limit(limit);
+    const [charts, chartsResultError] = await findMany({
+      collection: DB_MODELS.CHART,
+      query: {
+        user_id: User._id,
+      },
+      options: {
+        skip: (skip-1)*resultPerPage,
+        limit: resultPerPage
+      }
+    })
     return Response.json(charts);
   } catch (e) {
     console.log(e);
