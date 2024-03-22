@@ -7,7 +7,7 @@ import connectDB from "@/lib/db/configs/connection";
 
 // other imports
 import { resultPerPage } from "@/constants";
-import { unauthorized } from "@/utils/responses";
+import { sendData, unauthorized } from "@/utils/responses";
 import { findMany, findOne } from "@/lib/db/repository";
 
 export async function POST(request) {
@@ -26,8 +26,8 @@ export async function POST(request) {
       },
     });
     if (userResultError) return internalServerError(userResultError);
-
-    const [ChartResult, chartsResultError] = await findMany({
+    
+    const [chartResult, chartsResultError] = await findMany({
       collection: DB_MODELS.CHART,
       query: {
         user_id: userResult._id,
@@ -38,8 +38,8 @@ export async function POST(request) {
       },
     });
     if (chartsResultError) return internalServerError(chartsResultError);
-    return Response.json(ChartResult);
+    return sendData(chartResult);
   } catch (e) {
-    console.log(e);
+    return internalServerError(e);
   }
 }

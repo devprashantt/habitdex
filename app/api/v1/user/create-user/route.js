@@ -6,7 +6,7 @@ import DB_MODELS from "@/utils/modelsEnum";
 import connectDB from "@/lib/db/configs/connection";
 
 // responses
-import { unauthorized } from "@/utils/responses";
+import { ok, unauthorized } from "@/utils/responses";
 import { findOne, insertOne } from "@/lib/db/repository";
 
 export async function GET() {
@@ -38,5 +38,5 @@ export async function GET() {
     });
     if (newUserResultError) return internalServerError(newUserResultError);
   }
-  return new Response("OK", { status: 200 });
+  return ok();
 }

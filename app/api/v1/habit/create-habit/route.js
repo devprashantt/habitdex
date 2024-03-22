@@ -6,7 +6,7 @@ import DB_MODELS from "@/utils/modelsEnum";
 import connectDB from "@/lib/db/configs/connection";
 
 // responses
-import { badRequest, created, unauthorized } from "@/utils/responses";
+import { badRequest, created, internalServerError, unauthorized } from "@/utils/responses";
 import { findOne, insertOne } from "@/lib/db/repository";
 
 export async function POST(request) {
@@ -47,7 +47,6 @@ export async function POST(request) {
     });
     return created();
   } catch (e) {
-    console.log(e);
-    return badRequest();
+    return internalServerError({error: e})
   }
 }
