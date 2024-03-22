@@ -18,14 +18,14 @@ export async function POST(request) {
     if (!userId) {
       return unauthorized();
     }
-    const [User, userResultError] = await findOne({
-      collection: DB_MODELS.USER,
+    const [UserResult, userResultError] = await findOne({
+      collection: DB_MODELS.UserResult,
       query: {
         clerk_user_id: userId,
       },
     });
-    console.log(User,12)
-    if (!User) {
+    
+    if (!UserResult) {
       return unauthorized();
     }
     const [newChart, newChartResultError] = await insertOne({
@@ -33,13 +33,18 @@ export async function POST(request) {
       data: {
         name: data.name,
         description: data.description,
-        user_id: User._id,
+        user_id: UserResult._id,
         icon: data.icon,
         contributions_per_day: data.contributions_per_day,
         contribs: [],
         color: data.color,
       }
     })
+    await UserResult.updateOne({
+      $push: {
+        charts: newChart._id,
+      },
+    });
     return created();
   } catch (e) {
     console.log(e)

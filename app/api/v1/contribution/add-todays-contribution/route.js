@@ -21,7 +21,7 @@ export async function POST(request) {
     return unauthorized();
   }
 
-  const [User, userResultError] = await findOne({
+  const [UserResult, userResultError] = await findOne({
     collection: DB_MODELS.USER,
     query: {
       clerk_user_id: userId,
@@ -30,21 +30,21 @@ export async function POST(request) {
   if (userResultError) return internalServerError(userResultError);
 
   // find the chart
-  const [charts, chartsResultError] = await findOne({
+  const [chartsResult, chartsResultError] = await findOne({
     collection: DB_MODELS.CHART,
     query: {
       _id: habitId,
     },
   })
 
-  let chartDetails = await charts.contributions;
+  let chartDetails = await chartsResult.contributions;
   const date = new Date();
   const dateOnly = new Date(date.toLocaleDateString());
   // find the contribution for current day and if it doesn't exist create a new else increase the count by 1
   const [currentDayContribution, currentDayContributionError] = await findOne({
     collection: DB_MODELS.CONTRIBUTION,
     query: {
-      user_id: User._id,
+      user_id: UserResult._id,
       name: name,
       date: dateOnly,
     },
@@ -55,19 +55,19 @@ export async function POST(request) {
     currentDayContribution.count += 1;
     await currentDayContribution.save();
   } else {
-    const [newContribution, newContributionError] = await insertOne({
+    const [newContributionResult, newContributionError] = await insertOne({
       model: DB_MODELS.CONTRIBUTION,
       data: {
         name: name,
         date: dateOnly,
         count: 1,
-        user_id: User._id,
+        user_id: UserResult._id,
       },
     })
     
-    await charts.updateOne({
+    await chartsResult.updateOne({
       $push: {
-        contributions: newContribution._id,
+        contributions: newContributionResult._id,
       },
     });
 

@@ -19,26 +19,26 @@ export async function POST(request) {
     if (!userId) {
       return unauthorized();
     }
-    const [User, userResultError] = await findOne({
-      collection: DB_MODELS.USER,
+    const [UserResult, userResultError] = await findOne({
+      collection: DB_MODELS.UserResult,
       query: {
         clerk_user_id: userId,
       },
     });
-    if (!User) {
+    if (!UserResult) {
       return unauthorized();
     }
-    const [charts, chartsResultError] = await findMany({
+    const [ChartResult, chartsResultError] = await findMany({
       collection: DB_MODELS.CHART,
       query: {
-        user_id: User._id,
+        user_id: UserResult._id,
       },
       options: {
         skip: (skip-1)*resultPerPage,
         limit: resultPerPage
       }
     })
-    return Response.json(charts);
+    return Response.json(ChartResult);
   } catch (e) {
     console.log(e);
   }
