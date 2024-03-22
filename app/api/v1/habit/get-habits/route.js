@@ -25,9 +25,8 @@ export async function POST(request) {
         clerk_user_id: userId,
       },
     });
-    if (!userResult) {
-      return unauthorized();
-    }
+    if (userResultError) return internalServerError(userResultError);
+
     const [ChartResult, chartsResultError] = await findMany({
       collection: DB_MODELS.CHART,
       query: {
@@ -38,6 +37,7 @@ export async function POST(request) {
         limit: resultPerPage,
       },
     });
+    if (chartsResultError) return internalServerError(chartsResultError);
     return Response.json(ChartResult);
   } catch (e) {
     console.log(e);

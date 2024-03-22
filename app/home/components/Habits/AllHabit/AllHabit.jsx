@@ -10,7 +10,9 @@ import styles from "./AllHabit.module.scss";
 import useAllHabits from "@/hooks/apis/useAllHabits";
 
 const AllHabit = (props) => {
-  const [isLoading, currentPage, habits, setCurrentPage] = useAllHabits(props.event);
+  const [isLoading, currentPage, habits, setCurrentPage] = useAllHabits(
+    props.event,
+  );
   return (
     <div>
       <div className={styles.habit__container}>

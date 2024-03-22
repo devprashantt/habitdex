@@ -7,7 +7,7 @@ import connectDB from "@/lib/db/configs/connection";
 
 // response
 import { created, internalServerError } from "@/utils/responses";
-import { findOne, insert, insertOne } from "@/lib/db/repository";
+import { findOne, insertOne } from "@/lib/db/repository";
 
 export async function POST(request) {
   // get request data, connect to database and auth
@@ -36,19 +36,23 @@ export async function POST(request) {
       _id: habitId,
     },
   });
+  if (chartsResultError) return internalServerError(chartsResultError);
 
   let chartDetails = await chartsResult.contributions;
   const date = new Date();
   const dateOnly = new Date(date.toLocaleDateString());
   // find the contribution for current day and if it doesn't exist create a new else increase the count by 1
-  const [currentDayContributionResult, currentDayContributionError] = await findOne({
-    collection: DB_MODELS.CONTRIBUTION,
-    query: {
-      user_id: userResult._id,
-      name: name,
-      date: dateOnly,
-    },
-  });
+  const [currentDayContributionResult, currentDayContributionError] =
+    await findOne({
+      collection: DB_MODELS.CONTRIBUTION,
+      query: {
+        user_id: userResult._id,
+        name: name,
+        date: dateOnly,
+      },
+    });
+  if (currentDayContributionError)
+    return internalServerError(currentDayContributionError);
 
   // console.log(currentDayContributionResult)
   if (currentDayContributionResult) {
@@ -64,6 +68,7 @@ export async function POST(request) {
         user_id: userResult._id,
       },
     });
+    if (newContributionError) return internalServerError(newContributionError);
 
     await chartsResult.updateOne({
       $push: {

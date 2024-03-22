@@ -24,10 +24,8 @@ export async function POST(request) {
         clerk_user_id: userId,
       },
     });
+    if (userResultError) return internalServerError(userResultError);
 
-    if (!userResult) {
-      return unauthorized();
-    }
     const [newChartResult, newChartResultError] = await insertOne({
       model: DB_MODELS.CHART,
       data: {
@@ -40,6 +38,8 @@ export async function POST(request) {
         color: data.color,
       },
     });
+    if (newChartResultError) return internalServerError(newChartResultError);
+
     await userResult.updateOne({
       $push: {
         charts: newChartResult._id,

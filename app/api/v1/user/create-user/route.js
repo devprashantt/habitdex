@@ -36,6 +36,7 @@ export async function GET() {
         charts: [],
       },
     });
+    if (newUserResultError) return internalServerError(newUserResultError);
   }
   return new Response("OK", { status: 200 });
 }
