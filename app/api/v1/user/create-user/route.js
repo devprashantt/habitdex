@@ -1,15 +1,24 @@
 // auth
 import { auth, currentUser } from "@clerk/nextjs";
 
-// db models
+// lib
 import DB_MODELS from "@/utils/modelsEnum";
 import connectDB from "@/lib/db/configs/connection";
+import logger from "@/lib/services/winston";
 
 // responses
 import { ok, unauthorized } from "@/utils/responses";
 import { findOne, insertOne } from "@/lib/db/repository";
 
 export async function GET() {
+  logger.log({
+    level: "info",
+    message: "creating a new user",
+    meta: {
+      route: "create-user",
+    },
+  });
+
   await connectDB();
   const { userId } = auth();
   const user = await currentUser();
