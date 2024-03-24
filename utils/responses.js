@@ -15,9 +15,11 @@ const stringifyBody = (body) => {
   return JSON.stringify(body);
 };
 
-export const sendData = (data) => {
-  return Response.json(data);
-}
+export const sendData = ({ ...params }) => {
+  return Response.json({
+    ...params,
+  });
+};
 
 export const ok = (body = {}) => {
   return generateResponse(200, body);

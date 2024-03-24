@@ -6,17 +6,28 @@ import DB_MODELS from "@/utils/modelsEnum";
 import connectDB from "@/lib/db/configs/connection";
 
 // responses
-import { badRequest, created, internalServerError, unauthorized } from "@/utils/responses";
+import {
+  badRequest,
+  created,
+  internalServerError,
+  unauthorized,
+} from "@/utils/responses";
 import { findOne, insertOne } from "@/lib/db/repository";
 
 export async function POST(request) {
   try {
     const data = await request.json();
 
+    // if no data bad response
+    if (!data) return badRequest({ message: "No data provided" });
+
     await connectDB();
     const { userId } = auth();
     if (!userId) {
-      return unauthorized();
+      return unauthorized({
+        message: "User not found. Please authenticate and try again",
+        error: "User not found",
+      });
     }
     const [userResult, userResultError] = await findOne({
       collection: DB_MODELS.USER,
@@ -24,29 +35,51 @@ export async function POST(request) {
         clerk_user_id: userId,
       },
     });
-    if (userResultError) return internalServerError(userResultError);
+    if (userResultError)
+      return internalServerError({
+        message: "Error while fetching user",
+        error: userResultError,
+      });
+    if (!userResult)
+      return unauthorized({
+        message: "User not found. Please authenticate and try again",
+        error: "User not found",
+      });
 
-    const [newChartResult, newChartResultError] = await insertOne({
-      model: DB_MODELS.CHART,
+    const [newHabitResult, newHabitResultError] = await insertOne({
+      model: DB_MODELS.HABIT,
       data: {
-        name: data.name,
-        description: data.description,
-        user_id: userResult._id,
-        icon: data.icon,
-        contributions_per_day: data.contributions_per_day,
-        contribs: [],
-        color: data.color,
+        habit_name: data?.name,
+        description: data?.description,
+        icon: data?.icon,
+        color_theme: data?.color,
+        contributions_per_day: data?.contributions_per_day,
+        user_id: userResult?._id,
       },
     });
-    if (newChartResultError) return internalServerError(newChartResultError);
+    if (newHabitResultError)
+      return internalServerError({
+        message: "Error while creating habit",
+        error: newHabitResultError,
+      });
+    if (!newHabitResult)
+      return badRequest({
+        message: "Error while creating habit",
+        error: newHabitResultError,
+      });
 
-    await userResult.updateOne({
-      $push: {
-        charts: newChartResult._id,
-      },
+    return created({
+      message: "Habit created successfully",
+      data: newHabitResult,
     });
-    return created();
-  } catch (e) {
-    return internalServerError({error: e})
+  } catch (error) {
+    logger.log({
+      level: "error",
+      message: error.message,
+    });
+    return internalServerError({
+      message: "Error while creating habit",
+      error: error.message,
+    });
   }
 }

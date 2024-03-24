@@ -1,4 +1,4 @@
-// auth
+// clerk service
 import { SignedIn, SignedOut, currentUser } from "@clerk/nextjs";
 
 // modules
@@ -14,8 +14,10 @@ export default async function Home() {
     <main className={styles.main}>
       <div className={styles.main__part1}>
         <div className={styles.main__part1__left}>
-          <h1>Welcome to our</h1>
-          <h1>Habit Tracking App</h1>
+          <h1>
+            Welcome to our <br />
+            Habit Tracking App
+          </h1>
           <h6>Track your habit,achieve your goals,live your best life</h6>
           <SignedIn>
             <Link href="/home">
@@ -58,9 +60,7 @@ export default async function Home() {
             tracking app.
           </h6>
           <SignedIn>
-            <Link href="/home">
-              <PrimaryButton>Home</PrimaryButton>
-            </Link>
+            <Link href="/home">Home</Link>
           </SignedIn>
           <SignedOut>
             <Link href="/sign-up">
@@ -70,14 +70,6 @@ export default async function Home() {
         </div>
         <div className={styles.main__part3__left}></div>
       </div>
-      {/*<div>*/}
-      {/*	{*/}
-      {/*		(!user) ? <><Link href="/sign-in"><PrimaryButton children={"Sign In"}/></Link>*/}
-      {/*			<Link href="/sign-up"><PrimaryButton children={"Sign Up"}/></Link></> : <>*/}
-      {/*			<Link href="/home"><PrimaryButton children={"Home"}/></Link>*/}
-      {/*		</>*/}
-      {/*	}*/}
-      {/*</div>*/}
     </main>
   );
 }

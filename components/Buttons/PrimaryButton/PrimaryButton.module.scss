@@ -2,8 +2,10 @@
 @import "@/constants/styles/variables.scss";
 
 .button {
-  padding: $spacing-500 $spacing-800;
+  padding: $spacing-400 $spacing-800;
   border-radius: $border-radius-large;
   color: $gray-1000;
   background-color: $gray-100;
+  border: none;
+  font-size: 1rem;
 }
