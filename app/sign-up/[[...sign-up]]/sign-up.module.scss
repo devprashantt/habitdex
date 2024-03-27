@@ -1,8 +1,10 @@
-.signIn{
+@import "@/constants/styles/variables.scss";
+
+.sign__up{
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     height: 100vh;
-    background-color: #f5f5f5;
+    background-color: $gray-900;
 }

@@ -159,13 +159,10 @@ export default function CreateHabit(props) {
           </div>
         </form>
       </div>
-      <div className={styles.move__button}>
-      <button
-        className={!visible ? styles.visible__form : styles.hidden__form}
-        onClick={(e) => toggleVisible()}
-      >
+      <button className={visible ? styles.hidden__button : styles.visible__button}
+              onClick={(e) => toggleVisible()}>
         Add new Habit
-      </button></div>
+      </button>
     </div>
   );
 }

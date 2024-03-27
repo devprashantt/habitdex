@@ -13,11 +13,9 @@ const HabitControls = () => {
   const [event, setEvent] = useState(0);
   return (
     <div>
-        <div className={styles.add__button}>
             <CreateHabit  event={event} setEvent={setEvent} />
-        </div>
       <p>All Habits</p>
-      <Suspense fallback={<p>Loading feed...</p>}>
+      <Suspense fallback={<p>Loading habits...</p>}>
         <AllHabit event={event} />
       </Suspense>
     </div>

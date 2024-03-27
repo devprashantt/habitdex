@@ -1,7 +1,18 @@
-.move__button{
+@import "@/constants/styles/mixins.scss";
+@import "@/constants/styles/variables.scss";
+
+.visible__button{
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 20px;
+  right: 20px;
+  padding: $spacing-500 $spacing-800;
+  border-radius: $border-radius-large;
+  color: $gray-1000;
+  background-color: $gray-100;
+}
+
+.hidden__button{
+  display: none;
 }
 
 .visible__form {
