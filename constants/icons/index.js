@@ -19,8 +19,13 @@ import { CiHeart } from "react-icons/ci";
 import { LuLeaf } from "react-icons/lu";
 import { GiConsoleController } from "react-icons/gi";
 import { FaBicycle } from "react-icons/fa";
+import { FaPlus } from "react-icons/fa6";
 
 const habitFormIcons = [
+    {
+        name: "plus",
+        icon: <FaPlus />,
+    },
   {
     name: "pulse",
     icon: <CiWavePulse1 />,
@@ -108,6 +113,16 @@ const habitFormIcons = [
 ];
 
 const habitFormIconsJson = {
+    plus: (
+    <FaPlus
+    style={{
+        padding: "1px",
+        backgroundColor: "white",
+        scale: "1.5",
+        borderRadius: "100%",
+        }}
+    />
+    ),
   pulse: (
     <CiWavePulse1
       style={{

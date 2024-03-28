@@ -30,7 +30,7 @@ const Habit = (props) => {
           </div>
         </div>
         <p onClick={handleSubmit} className={styles.addContribution}>
-          +
+          {habitFormIconsJson["plus"]}
         </p>
       </div>
       <div></div>
