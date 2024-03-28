@@ -18,11 +18,18 @@ const AllHabit = (props) => {
 
   const { getHabits, isLoading, error } = useHabit();
 
-  useEffect(() => {
-    getHabits(props.event, (habits) => {
-      setAllHabits(habits);
-    });
-  }, []);
+  // useEffect( () => {
+  //   // getHabits(props.event, (habits) => {
+  //   //   setAllHabits(habits);
+  //   // });
+  //   setAllHabits(getHabits());
+  //   // setAllHabits(data)
+    
+  // }, [props.event]);
+
+  useEffect(()=>{
+    getHabits(setAllHabits);
+  }, [props.event]);
 
   return (
     <div>
@@ -36,7 +43,7 @@ const AllHabit = (props) => {
                 name={habit.habit_name}
                 description={habit.description}
                 icon={habit.icon}
-                color={habit.theme_color}
+                color={habit.color}
                 contributions_per_day={habit.contributions_per_day}
               />
             );

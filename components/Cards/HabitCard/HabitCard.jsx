@@ -10,6 +10,7 @@ import useHabit from "@/hooks/apis/useHabit";
 
 const HabitCard = (props) => {
   const color = themeColorJson[props.color];
+  // console.log(props.color)
 
   const { addTodaysContribution } = useHabit();
 

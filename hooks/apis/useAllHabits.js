@@ -16,7 +16,6 @@ const useAllHabits = (event) => {
     const data = await response.data;
     setHabit(data);
     setIsLoading(false);
-    // console.log(data);
   };
   useEffect(() => {
     FetchData();

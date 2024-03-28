@@ -8,13 +8,9 @@ const useUser = () => {
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
-  const registerUser = async (payload, cb) => {
+  const registerUser = async (cb) => {
     try {
-      const apiResponse = await axios.get(`/api/v1/user/get-user`, payload, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      const apiResponse = await axios.get(`/api/v1/user/get-user`);
 
       if (apiResponse.status === 200) {
         customToast({

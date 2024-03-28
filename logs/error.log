@@ -103,3 +103,116 @@
 2024-03-24 20:04:18 [backend] [31merror[39m: [31mobject is not iterable (cannot read property Symbol(Symbol.iterator))[39m 
 2024-03-24 20:04:19 [backend] [31merror[39m: [31mobject is not iterable (cannot read property Symbol(Symbol.iterator))[39m 
 2024-03-24 20:05:25 [backend] [31merror[39m: [31mobject is not iterable (cannot read property Symbol(Symbol.iterator))[39m 
+2024-03-28 14:18:01 [backend] [31merror[39m: [31mError while fetching habits[39m 
+2024-03-28 14:18:01 [backend] [31merror[39m: [31mDynamic server usage: Page couldn't be rendered statically because it used `headers`. See more info here: https://nextjs.org/docs/messages/dynamic-server-error[39m 
+2024-03-28 14:18:02 [backend] [31merror[39m: [31mError while fetching habit[39m 
+2024-03-28 14:19:00 [backend] [31merror[39m: [31mError while fetching habits[39m 
+2024-03-28 14:19:01 [backend] [31merror[39m: [31mDynamic server usage: Page couldn't be rendered statically because it used `headers`. See more info here: https://nextjs.org/docs/messages/dynamic-server-error[39m 
+2024-03-28 14:19:40 [backend] [31merror[39m: [31mDynamic server usage: Page couldn't be rendered statically because it used `headers`. See more info here: https://nextjs.org/docs/messages/dynamic-server-error[39m 
+2024-03-28 14:19:40 [backend] [31merror[39m: [31mError while fetching habits[39m 
+2024-03-28 14:21:11 [backend] [31merror[39m: [31mError while fetching habits[39m 
+2024-03-28 14:21:12 [backend] [31merror[39m: [31mDynamic server usage: Page couldn't be rendered statically because it used `headers`. See more info here: https://nextjs.org/docs/messages/dynamic-server-error[39m 
+2024-03-28 14:27:06 [backend] [31merror[39m: [31mDynamic server usage: Page couldn't be rendered statically because it used `headers`. See more info here: https://nextjs.org/docs/messages/dynamic-server-error[39m 
+2024-03-28 14:27:06 [backend] [31merror[39m: [31mError while fetching habits[39m 
+2024-03-28 14:28:03 [backend] [31merror[39m: [31mDynamic server usage: Page couldn't be rendered statically because it used `headers`. See more info here: https://nextjs.org/docs/messages/dynamic-server-error[39m 
+2024-03-28 14:28:03 [backend] [31merror[39m: [31mError while fetching habits[39m 
+2024-03-28 14:28:59 [backend] [31merror[39m: [31mDynamic server usage: Page couldn't be rendered statically because it used `headers`. See more info here: https://nextjs.org/docs/messages/dynamic-server-error[39m 
+2024-03-28 14:29:00 [backend] [31merror[39m: [31mError while fetching habits[39m 
+2024-03-28 14:33:51 [backend] [31merror[39m: [31mError while fetching habits[39m 
+2024-03-28 14:33:51 [backend] [31merror[39m: [31mError while fetching habits[39m 
+2024-03-28 14:33:51 [backend] [31merror[39m: [31mError while fetching habits[39m 
+2024-03-28 14:34:07 [backend] [31merror[39m: [31mError while fetching habits[39m 
+2024-03-28 14:35:13 [backend] [31merror[39m: [31mError while fetching habits[39m 
+2024-03-28 14:35:13 [backend] [31merror[39m: [31mError while fetching habits[39m 
+2024-03-28 14:35:48 [backend] [31merror[39m: [31mError while fetching habits[39m 
+2024-03-28 14:35:48 [backend] [31merror[39m: [31mError while fetching habits[39m 
+2024-03-28 14:37:20 [backend] [31merror[39m: [31mError while fetching habits 1[39m 
+2024-03-28 14:37:21 [backend] [31merror[39m: [31mError while fetching habits 1[39m 
+2024-03-28 14:37:21 [backend] [31merror[39m: [31mError while fetching habits 1[39m 
+2024-03-28 14:37:21 [backend] [31merror[39m: [31mError while fetching habits 1[39m 
+2024-03-28 14:37:39 [backend] [31merror[39m: [31mError while fetching habits 1[39m 
+2024-03-28 14:39:10 [backend] [31merror[39m: [31mError while fetching habits 1[39m 
+2024-03-28 14:39:10 [backend] [31merror[39m: [31mError while fetching habits 1[39m 
+2024-03-28 14:39:10 [backend] [31merror[39m: [31mError while fetching habits 1[39m 
+2024-03-28 14:39:10 [backend] [31merror[39m: [31mError while fetching habits 1[39m 
+2024-03-28 14:39:23 [backend] [31merror[39m: [31mError while fetching habits 1[39m 
+2024-03-28 14:40:18 [backend] [31merror[39m: [31mError while fetching habits 1[39m 
+2024-03-28 14:40:20 [backend] [31merror[39m: [31mError while fetching habits 1[39m 
+2024-03-28 14:40:22 [backend] [31merror[39m: [31mError while fetching habits 1[39m 
+2024-03-28 14:40:28 [backend] [31merror[39m: [31mError while fetching habits 1[39m 
+2024-03-28 14:40:28 [backend] [31merror[39m: [31mError while fetching habits 1[39m 
+2024-03-28 14:40:29 [backend] [31merror[39m: [31mError while fetching habits 1[39m 
+2024-03-28 14:57:35 [backend] [31merror[39m: [31mError while fetching habits 1[39m 
+2024-03-28 14:57:35 [backend] [31merror[39m: [31mError while fetching habits 1[39m 
+2024-03-28 14:57:35 [backend] [31merror[39m: [31mError while fetching habits 1[39m 
+2024-03-28 14:57:36 [backend] [31merror[39m: [31mError while fetching habits 1[39m 
+2024-03-28 14:57:50 [backend] [31merror[39m: [31mError while fetching habits 1[39m 
+2024-03-28 14:58:26 [backend] [31merror[39m: [31mError while fetching habits 1[39m 
+2024-03-28 14:58:27 [backend] [31merror[39m: [31mResponse.sendData is not a function[39m 
+2024-03-28 14:58:31 [backend] [31merror[39m: [31mError while fetching habits 1[39m 
+2024-03-28 14:58:32 [backend] [31merror[39m: [31mResponse.send is not a function[39m 
+2024-03-28 14:58:34 [backend] [31merror[39m: [31mError while fetching habits 1[39m 
+2024-03-28 14:59:20 [backend] [31merror[39m: [31mError while fetching habits 1[39m 
+2024-03-28 14:59:21 [backend] [31merror[39m: [31mError while fetching habits 1[39m 
+2024-03-28 14:59:21 [backend] [31merror[39m: [31mjson is not defined[39m 
+2024-03-28 14:59:25 [backend] [31merror[39m: [31mError while fetching habits 1[39m 
+2024-03-28 14:59:35 [backend] [31merror[39m: [31mError while fetching habits 1[39m 
+2024-03-28 14:59:44 [backend] [31merror[39m: [31mError while fetching habits 1[39m 
+2024-03-28 14:59:45 [backend] [31merror[39m: [31m"[object Object]" is not valid JSON[39m 
+2024-03-28 14:59:58 [backend] [31merror[39m: [31mError while fetching habits 1[39m 
+2024-03-28 15:00:00 [backend] [31merror[39m: [31mError while fetching habits 1[39m 
+2024-03-28 15:00:03 [backend] [31merror[39m: [31mError while fetching habits 1[39m 
+2024-03-28 15:00:10 [backend] [31merror[39m: [31mError while fetching habits 1[39m 
+2024-03-28 15:04:38 [backend] [31merror[39m: [31mError while fetching habits 1[39m 
+2024-03-28 15:04:38 [backend] [31merror[39m: [31mError while fetching habits 1[39m 
+2024-03-28 15:04:38 [backend] [31merror[39m: [31mError while fetching habits 1[39m 
+2024-03-28 15:04:38 [backend] [31merror[39m: [31mError while fetching habits 1[39m 
+2024-03-28 15:05:03 [backend] [31merror[39m: [31mError while fetching habits 1[39m 
+2024-03-28 15:05:10 [backend] [31merror[39m: [31mError while fetching habits 1[39m 
+2024-03-28 15:05:10 [backend] [31merror[39m: [31mError while fetching habits 1[39m 
+2024-03-28 15:05:10 [backend] [31merror[39m: [31mError while fetching habits 1[39m 
+2024-03-28 15:05:44 [backend] [31merror[39m: [31mError while fetching habits 1[39m 
+2024-03-28 15:05:45 [backend] [31merror[39m: [31mError while fetching habits 1[39m 
+2024-03-28 15:05:48 [backend] [31merror[39m: [31mError while fetching habits 1[39m 
+2024-03-28 15:05:53 [backend] [31merror[39m: [31mError while fetching habits 1[39m 
+2024-03-28 15:06:04 [backend] [31merror[39m: [31mError while fetching habits 1[39m 
+2024-03-28 15:06:04 [backend] [31merror[39m: [31mError while fetching habits 1[39m 
+2024-03-28 15:06:04 [backend] [31merror[39m: [31mError while fetching habits 1[39m 
+2024-03-28 15:06:48 [backend] [31merror[39m: [31mError while fetching habits 1[39m 
+2024-03-28 15:09:07 [backend] [31merror[39m: [31mError while fetching habits 1[39m 
+2024-03-28 15:09:07 [backend] [31merror[39m: [31mError while fetching habits 1[39m 
+2024-03-28 15:09:07 [backend] [31merror[39m: [31mError while fetching habits 1[39m 
+2024-03-28 15:09:07 [backend] [31merror[39m: [31mError while fetching habits 1[39m 
+2024-03-28 15:32:06 [backend] [31merror[39m: [31mError while fetching habits 1[39m 
+2024-03-28 15:32:06 [backend] [31merror[39m: [31mError while fetching habits 1[39m 
+2024-03-28 15:32:06 [backend] [31merror[39m: [31mError while fetching habits 1[39m 
+2024-03-28 15:32:38 [backend] [31merror[39m: [31mError while fetching habits 1[39m 
+2024-03-28 15:33:24 [backend] [31merror[39m: [31mError while fetching habits 1[39m 
+2024-03-28 15:33:31 [backend] [31merror[39m: [31mError while fetching habits 1[39m 
+2024-03-28 15:33:31 [backend] [31merror[39m: [31mError while fetching habits 1[39m 
+2024-03-28 15:33:31 [backend] [31merror[39m: [31mError while fetching habits 1[39m 
+2024-03-28 15:54:59 [backend] [31merror[39m: [31mError while fetching habits 1[39m 
+2024-03-28 15:54:59 [backend] [31merror[39m: [31mError while fetching habits 1[39m 
+2024-03-28 15:54:59 [backend] [31merror[39m: [31mError while fetching habits 1[39m 
+2024-03-28 15:55:12 [backend] [31merror[39m: [31mError while fetching habits 1[39m 
+2024-03-28 15:55:12 [backend] [31merror[39m: [31mError while fetching habits 1[39m 
+2024-03-28 15:55:13 [backend] [31merror[39m: [31mError while fetching habits 1[39m 
+2024-03-28 15:57:46 [backend] [31merror[39m: [31mError while fetching habits 1[39m 
+2024-03-28 15:57:46 [backend] [31merror[39m: [31mError while fetching habits 1[39m 
+2024-03-28 15:57:46 [backend] [31merror[39m: [31mError while fetching habits 1[39m 
+2024-03-28 15:57:47 [backend] [31merror[39m: [31mError while fetching habits 1[39m 
+2024-03-28 15:58:12 [backend] [31merror[39m: [31mError while fetching habits[39m 
+2024-03-28 15:58:22 [backend] [31merror[39m: [31mError while fetching habits[39m 
+2024-03-28 15:58:22 [backend] [31merror[39m: [31mError while fetching habits[39m 
+2024-03-28 15:58:22 [backend] [31merror[39m: [31mError while fetching habits[39m 
+2024-03-28 15:58:39 [backend] [31merror[39m: [31mError while fetching habits 2[39m 
+2024-03-28 15:58:51 [backend] [31merror[39m: [31mError while fetching habits 2[39m 
+2024-03-28 15:58:52 [backend] [31merror[39m: [31mError while fetching habits 2[39m 
+2024-03-28 15:58:52 [backend] [31merror[39m: [31mError while fetching habits 2[39m 
+2024-03-28 15:59:03 [backend] [31merror[39m: [31mError while fetching habits 2[39m 
+2024-03-28 15:59:03 [backend] [31merror[39m: [31mError while fetching habits 2[39m 
+2024-03-28 15:59:03 [backend] [31merror[39m: [31mError while fetching habits 2[39m 
+2024-03-28 15:59:12 [backend] [31merror[39m: [31mError while fetching habits 2[39m 
+2024-03-28 15:59:20 [backend] [31merror[39m: [31mError while fetching habits 2[39m 
+2024-03-28 15:59:21 [backend] [31merror[39m: [31mError while fetching habits 2[39m 
+2024-03-28 15:59:21 [backend] [31merror[39m: [31mError while fetching habits 2[39m 

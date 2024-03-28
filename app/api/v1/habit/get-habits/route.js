@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic"
+
 // auth
 import { auth } from "@clerk/nextjs";
 
@@ -10,9 +12,9 @@ import { notFound, sendData, internalServerError } from "@/utils/responses";
 import { findMany, findOne } from "@/lib/db/repository";
 import logger from "@/lib/services/winston";
 
-export async function GET(request) {
+export async function GET() {
   try {
-    const data = await request.json();
+    
 
     await connectDB();
     const { userId } = auth();
@@ -59,12 +61,13 @@ export async function GET(request) {
       },
     });
     if (habitsResultError) {
+      console.log(habitsResultError)
       logger.log({
         level: "error",
-        message: "Error while fetching habits",
+        message: "Error while fetching habits 2",
       });
       return internalServerError({
-        message: "Error while fetching habits",
+        message: "Error while fetching habits 2",
         error: habitsResultError,
       });
     }
@@ -78,17 +81,17 @@ export async function GET(request) {
       });
     }
 
-    return sendData({
-      message: "Habits fetched successfully",
-      data: habitsResult,
-    });
+    return sendData(
+      habitsResult
+    );
   } catch (error) {
+    console.log(error)
     logger.log({
       level: "error",
-      message: "Error while fetching habits",
+      message: "Error while fetching habits 1",
     });
     return internalServerError({
-      message: "Error while fetching habits",
+      message: "Error while fetching habits 1",
       error: error.message,
     });
   }

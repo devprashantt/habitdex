@@ -15,10 +15,9 @@ const stringifyBody = (body) => {
   return JSON.stringify(body);
 };
 
-export const sendData = ({ ...params }) => {
-  return Response.json({
-    ...params,
-  });
+export const sendData = (data) => {
+  // console.log(data,typeof(data))
+  return Response.json(data);
 };
 
 export const ok = (body = {}) => {
