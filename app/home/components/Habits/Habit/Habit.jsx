@@ -7,6 +7,7 @@ import { habitFormIconsJson, themeColorJson } from "@/constants";
 // styles
 import styles from "./Habit.module.scss";
 import useHabit from "@/hooks/apis/useHabit";
+import {FaPlus} from "react-icons/fa6";
 
 const Habit = (props) => {
   const color = themeColorJson[props.color];
@@ -30,7 +31,7 @@ const Habit = (props) => {
           </div>
         </div>
         <p onClick={handleSubmit} className={styles.addContribution}>
-          {habitFormIconsJson["plus"]}
+          <FaPlus/>
         </p>
       </div>
       <div></div>
