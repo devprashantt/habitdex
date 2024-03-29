@@ -1,5 +1,6 @@
 "use client";
-// module and hooks
+
+import customToast from "@/lib/services/toast";
 import axios from "axios";
 import { useState } from "react";
 
@@ -8,7 +9,35 @@ const useUser = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   const registerUser = async (payload, cb) => {
-    const response = await axios.get("/api/v1/user/create-user");
+    try {
+      const apiResponse = await axios.get(`/api/v1/user/get-user`, payload, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      if (apiResponse.status === 200) {
+        customToast({
+          message: "User registered successfully",
+          type: "success",
+        });
+        cb(apiResponse.data);
+      } else {
+        setError(apiResponse.data.message);
+        customToast({
+          message: "Something went wrong",
+          type: "error",
+        });
+      }
+    } catch (error) {
+      setError(error.message);
+      customToast({
+        message: "Something went wrong",
+        type: "error",
+      });
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return {

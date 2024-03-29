@@ -4,57 +4,113 @@ import { auth } from "@clerk/nextjs";
 // db models
 import DB_MODELS from "@/utils/modelsEnum";
 import connectDB from "@/lib/db/configs/connection";
+import logger from "@/lib/services/winston";
 
 // response
-import { created } from "@/utils/responses";
+import { created, internalServerError, notFound } from "@/utils/responses";
+import { findOne, insertOne } from "@/lib/db/repository";
 
 export async function POST(request) {
-  // get request data, connect to database and auth
   const data = await request.json();
-  const name = data.name;
-  const habitId = data.habitId;
+  const { name, habitId } = data;
+
   await connectDB();
 
-  const { userId } = auth();
-  if (!userId) {
-    return unauthorized();
-  }
-  const User = await DB_MODELS.USER.findOne({ clerk_user_id: userId });
-  if (!User) {
-    return unauthorized();
-  }
+  try {
+    const { userId } = auth();
+    if (!userId) {
+      logger.log({
+        level: "error",
+        message: "User not found",
+      });
+      return unauthorized("User not found. Please authenticate and try again");
+    }
 
-  // find the chart
-  const charts = await DB_MODELS.CHART.find({
-    _id: habitId,
-  });
-  // console.log(charts,habitId,name);
-  var contribs = await charts[0].contributions;
-  const date = new Date();
-  const dateOnly = new Date(date.toDateString());
-
-  // find the contribution for current day and if it doesnt exist create a new else increase the count by 1
-  const currentDayContribution = await DB_MODELS.CONTRIBUTION.findOne({
-    user_id: User._id,
-    name: name,
-    date: dateOnly,
-  });
-
-  if (currentDayContribution) {
-    currentDayContribution.count = currentDayContribution.count + 1;
-    currentDayContribution.save();
-  } else {
-    const newContribution = new DB_MODELS.CONTRIBUTION({
-      name: name,
-      date: dateOnly,
-      count: 1,
-      user_id: User._id,
+    const [user, userError] = await findOne({
+      collection: DB_MODELS.USER,
+      query: { clerk_user_id: userId },
     });
-    contribs = [...contribs, newContribution];
-    charts[0].contributions = contribs;
-    // console.log(newContribution);
-    await charts[0].save();
-    await newContribution.save();
+    if (userError) {
+      logger.log({
+        level: "error",
+        message: "Error while fetching user",
+      });
+      return notFound("Error while fetching user");
+    }
+
+    const habit = await findOne({
+      collection: DB_MODELS.HABIT,
+      query: { _id: habitId },
+    });
+    if (!habit) {
+      logger.log({
+        level: "error",
+        message: "Habit not found",
+      });
+      return notFound("Habit not found");
+    }
+
+    const currentDate = new Date().toISOString().split("T")[0];
+    const [existingContribution, existingContributionError] = await findOne({
+      collection: DB_MODELS.CONTRIBUTION,
+      query: {
+        user_id: user._id,
+        habit_id: habitId,
+        date: currentDate,
+      },
+    });
+    if (existingContributionError) {
+      logger.log({
+        level: "error",
+        message: "Error while fetching existing contribution",
+      });
+      return internalServerError("Error while fetching existing contribution");
+    }
+
+    if (existingContribution) {
+      const [_, updatedContributionError] = await updateOne({
+        collection: DB_MODELS.CONTRIBUTION,
+        query: { _id: existingContribution._id },
+        update: { $inc: { count: 1 } },
+      });
+      if (updatedContributionError) {
+        logger.log({
+          level: "error",
+          message: "Error while updating existing contribution",
+        });
+        return internalServerError(
+          "Error while updating existing contribution",
+        );
+      }
+    } else {
+      const [newContribution, newContributionError] = await insertOne({
+        collection: DB_MODELS.CONTRIBUTION,
+        data: {
+          name,
+          date: currentDate,
+          count: 1,
+          user_id: user._id,
+          habit_id: habitId,
+        },
+      });
+      if (newContributionError) {
+        logger.log({
+          level: "error",
+          message: "Error while adding new contribution",
+        });
+        return internalServerError("Error while adding new contribution");
+      }
+    }
+
+    return created("Contribution added successfully", {
+      contribution: currentDayContributionResult,
+    });
+  } catch (error) {
+    logger.log({
+      level: "error",
+      message: error.message,
+    });
+    return internalServerError("Error processing contribution");
   }
-  return created();
 }
+

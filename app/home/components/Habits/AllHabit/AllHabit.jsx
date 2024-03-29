@@ -1,66 +1,47 @@
 "use client";
 
-// components and icons
-import Habit from "../Habit/Habit";
-import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+// libraries
+import { useState, useEffect } from "react";
+
+// components
+import HabitCard from "@/components/Cards/HabitCard/HabitCard";
 
 // misc
-import { resultPerPage } from "@/constants";
 import styles from "./AllHabit.module.scss";
-import useAllHabits from "@/hooks/apis/useAllHabits";
+
+// api hooks
+import useHabit from "@/hooks/apis/useHabit";
 
 const AllHabit = (props) => {
-  const [isLoading, currentPage, habits, setCurrentPage] = useAllHabits();
+  const [allHabits, setAllHabits] = useState([]);
+
+  const { getHabits, isLoading, error } = useHabit();
+
+  useEffect(() => {
+    getHabits(props.event, (habits) => {
+      setAllHabits(habits);
+    });
+  }, []);
+
   return (
     <div className={styles.all__habits}>
       <div className={styles.habit__container}>
-        {!isLoading
-          ? habits.map((habit, index) => {
-              return (
-                <Habit
-                  key={index}
-                  name={habit.name}
-                  description={habit.description}
-                  icon={habit.icon}
-                  color={habit.color}
-                  contributions_per_day={habit.contributions_per_day}
-                  contributions={habit.contributions}
-                  _id={habit._id}
-                  count={index + (currentPage - 1) * resultPerPage}
-                />
-              );
-            })
-          : habits.map((habit, index) => {
-              return (
-                // color contributions_per_day description icon name _id contributions
-                <Habit
-                  key={index}
-                  name="Loading..."
-                  description="Loading..."
-                  icon="pulse"
-                  color="red-varient-1"
-                  contributions_per_day="Loading..."
-                  count={index + (currentPage - 1) * resultPerPage}
-                />
-              );
-            })}
+        {!isLoading &&
+          allHabits.map((habit, index) => {
+            return (
+              <HabitCard
+                id={habit._id}
+                key={index}
+                name={habit.habit_name}
+                description={habit.description}
+                icon={habit.icon}
+                color={habit.theme_color}
+                contributions_per_day={habit.contributions_per_day}
+              />
+            );
+          })}
       </div>
 
-      <footer className={styles.footer}>
-          <button
-            disabled={currentPage === 1}
-            onClick={(e) => setCurrentPage((prev) => Math.max(prev - 1, 1))}
-          >
-            <IoIosArrowBack />
-          </button>
-          <p>{currentPage}</p>
-          <button
-            disabled={habits.length < resultPerPage}
-            onClick={(e) => setCurrentPage((prev) => prev + 1)}
-          >
-            <IoIosArrowForward />
-          </button>
-      </footer>
     </div>
   );
 };

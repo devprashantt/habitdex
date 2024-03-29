@@ -1,12 +1,13 @@
-// models
-import { Chart } from "@/lib/db/models/chart.model";
+import { Habit } from "@/lib/db/models/habit.model";
 import { Contribution } from "@/lib/db/models/contribution.model";
 import { User } from "@/lib/db/models/user.model";
+import { Integration } from "@/lib/db/models/integration.model";
 
 const DB_MODELS = {
   USER: User,
   CONTRIBUTION: Contribution,
-  CHART: Chart,
+  HABIT: Habit,
+  INTEGRATION: Integration,
 };
 
 export default DB_MODELS;

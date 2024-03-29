@@ -7,7 +7,6 @@ import CreateHabit from "@/containers/Forms/CreateHabit";
 import AllHabit from "./AllHabit/AllHabit";
 
 // styles
-import styles from "@/app/home/components/Habits/Habit/Habit.module.scss"
 
 const HabitControls = () => {
   const [event, setEvent] = useState(0);

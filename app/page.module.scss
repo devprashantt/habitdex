@@ -25,16 +25,19 @@
   justify-content: center;
   align-items: flex-start;
   flex-direction: column;
+
   button {
     padding: $spacing-500 $spacing-800;
     border-radius: $border-radius-large;
     color: $gray-1000;
   }
+
   h1 {
     word-spacing: -8px;
     line-height: $spacing-800;
     font-size: 5em;
   }
+
   h6 {
     color: $gray-600;
     font-size: $font-size-xmedium;
@@ -95,16 +98,19 @@
   justify-content: center;
   align-items: flex-start;
   flex-direction: column;
+
   button {
     padding: $spacing-500 $spacing-800;
     border-radius: $border-radius-large;
     color: $gray-1000;
   }
+
   h1 {
     word-spacing: -8px;
     line-height: $spacing-800;
     font-size: 5em;
   }
+
   h6 {
     color: $gray-600;
     font-size: $font-size-xmedium;

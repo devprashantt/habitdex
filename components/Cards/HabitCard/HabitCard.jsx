@@ -1,16 +1,26 @@
+// react-icons
+import { HiMiniPlus } from "react-icons/hi2";
 
-// Icons
+// icons
 import { habitFormIconsJson, themeColorJson } from "@/constants";
 
 // styles
-import styles from "./Habit.module.scss";
+import styles from "./HabitCard.module.scss";
 import useHabit from "@/hooks/apis/useHabit";
-import { GoPlus } from "react-icons/go";
 
-
-const Habit = (props) => {
+const HabitCard = (props) => {
   const color = themeColorJson[props.color];
-  const [handleSubmit] = useHabit(props.name, props._id);
+
+  const { addTodaysContribution } = useHabit();
+
+  const handleSubmit = () => {
+    let payload = {
+      habitId: props._id,
+      name: props.name,
+    };
+
+    addTodaysContribution(payload, () => {});
+  };
 
   return (
     <div
@@ -30,12 +40,11 @@ const Habit = (props) => {
           </div>
         </div>
         <p onClick={handleSubmit} className={styles.addContribution}>
-          <GoPlus/>
+          <HiMiniPlus />
         </p>
       </div>
-      <div></div>
     </div>
   );
 };
 
-export default Habit;
+export default HabitCard;

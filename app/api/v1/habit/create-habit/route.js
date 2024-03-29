@@ -6,32 +6,80 @@ import DB_MODELS from "@/utils/modelsEnum";
 import connectDB from "@/lib/db/configs/connection";
 
 // responses
-import { badRequest, created, unauthorized } from "@/utils/responses";
+import {
+  badRequest,
+  created,
+  internalServerError,
+  unauthorized,
+} from "@/utils/responses";
+import { findOne, insertOne } from "@/lib/db/repository";
 
 export async function POST(request) {
   try {
     const data = await request.json();
+
+    // if no data bad response
+    if (!data) return badRequest({ message: "No data provided" });
+
     await connectDB();
     const { userId } = auth();
     if (!userId) {
-      return unauthorized();
+      return unauthorized({
+        message: "User not found. Please authenticate and try again",
+        error: "User not found",
+      });
     }
-    const individual = await DB_MODELS.USER.findOne({ clerk_user_id: userId });
-    if (!individual) {
-      return unauthorized();
-    }
-    const new_chart = new DB_MODELS.CHART({
-      name: data.name,
-      description: data.description,
-      user_id: individual._id,
-      icon: data.icon,
-      contributions_per_day: data.contributions_per_day,
-      contribs: [],
-      color: data.color,
+    const [userResult, userResultError] = await findOne({
+      collection: DB_MODELS.USER,
+      query: {
+        clerk_user_id: userId,
+      },
     });
-    await new_chart.save();
-    return created();
-  } catch (e) {
-    return badRequest();
+    if (userResultError)
+      return internalServerError({
+        message: "Error while fetching user",
+        error: userResultError,
+      });
+    if (!userResult)
+      return unauthorized({
+        message: "User not found. Please authenticate and try again",
+        error: "User not found",
+      });
+
+    const [newHabitResult, newHabitResultError] = await insertOne({
+      model: DB_MODELS.HABIT,
+      data: {
+        habit_name: data?.name,
+        description: data?.description,
+        icon: data?.icon,
+        color_theme: data?.color,
+        contributions_per_day: data?.contributions_per_day,
+        user_id: userResult?._id,
+      },
+    });
+    if (newHabitResultError)
+      return internalServerError({
+        message: "Error while creating habit",
+        error: newHabitResultError,
+      });
+    if (!newHabitResult)
+      return badRequest({
+        message: "Error while creating habit",
+        error: newHabitResultError,
+      });
+
+    return created({
+      message: "Habit created successfully",
+      data: newHabitResult,
+    });
+  } catch (error) {
+    logger.log({
+      level: "error",
+      message: error.message,
+    });
+    return internalServerError({
+      message: "Error while creating habit",
+      error: error.message,
+    });
   }
 }
