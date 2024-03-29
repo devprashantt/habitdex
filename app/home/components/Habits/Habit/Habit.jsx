@@ -1,5 +1,3 @@
-// module imports
-import axios from "axios";
 
 // Icons
 import { habitFormIconsJson, themeColorJson } from "@/constants";
@@ -7,7 +5,8 @@ import { habitFormIconsJson, themeColorJson } from "@/constants";
 // styles
 import styles from "./Habit.module.scss";
 import useHabit from "@/hooks/apis/useHabit";
-import {FaPlus} from "react-icons/fa6";
+import { GoPlus } from "react-icons/go";
+
 
 const Habit = (props) => {
   const color = themeColorJson[props.color];
@@ -31,7 +30,7 @@ const Habit = (props) => {
           </div>
         </div>
         <p onClick={handleSubmit} className={styles.addContribution}>
-          <FaPlus/>
+          <GoPlus/>
         </p>
       </div>
       <div></div>
