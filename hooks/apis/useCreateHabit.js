@@ -30,7 +30,6 @@ const useCreateHabit = (setEvent, formData, setFormData) => {
     formData.icon = randIcon;
     formData.completion = 1;
     formData.color = randColor;
-    // console.log(payload)
     const response = await axios.post("/api/v1/habit/create-habit", payload);
     setEvent((prev) => prev + 1);
     setLoading(false);

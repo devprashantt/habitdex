@@ -1,18 +1,12 @@
-export const dynamic = "force-dynamic";
-
-// auth
+import connectDB from "@/lib/db/configs/connection";
+import { findAndPopulate, findOne } from "@/lib/db/repository";
+import logger from "@/lib/services/winston";
+import DB_MODELS from "@/utils/modelsEnum";
+import { internalServerError, sendData } from "@/utils/responses";
 import { auth } from "@clerk/nextjs";
 
-// db models
-import DB_MODELS from "@/utils/modelsEnum";
-import connectDB from "@/lib/db/configs/connection";
-
-// other imports
-import { notFound, sendData, internalServerError } from "@/utils/responses";
-import { findMany, findOne } from "@/lib/db/repository";
-import logger from "@/lib/services/winston";
-
-export async function GET() {
+export async function POST(request) {
+  const data = await request.json();
   try {
     await connectDB();
     const { userId } = auth();
@@ -51,44 +45,26 @@ export async function GET() {
         message: `User not found for id: ${userId}`,
       });
     }
-
-    const [habitsResult, habitsResultError] = await findMany({
-      collection: DB_MODELS.HABIT,
-      query: {
-        user_id: userResult._id,
+    const [contributionResult, contributionResultError] = await findAndPopulate(
+      {
+        collection: DB_MODELS.HABIT,
+        query: {
+          _id: data._id,
+        },
+        populateOption: { path: "contributions" },
       },
-    });
-    if (habitsResultError) {
-      logger.log({
-        level: "error",
-        message: "Error while fetching habits 2",
-      });
-      return internalServerError({
-        message: "Error while fetching habits 2",
-        error: habitsResultError,
-      });
-    }
-    if (!habitsResult) {
-      logger.log({
-        level: "error",
-        message: "No habits found",
-      });
-      return notFound({
-        message: "No habits found",
-      });
-    }
-
+    );
     return sendData({
-      data: habitsResult,
-      msg: "habits fetched successfully",
+      data: contributionResult,
+      message: "Contributions fetched successfully",
     });
   } catch (error) {
     logger.log({
       level: "error",
-      message: "Error while fetching habits 1",
+      message: "Error while fetching contributions",
     });
     return internalServerError({
-      message: "Error while fetching habits 1",
+      msg: "Error while fetching contributions",
       error: error.message,
     });
   }

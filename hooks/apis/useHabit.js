@@ -11,7 +11,6 @@ const useHabit = () => {
       setIsLoading(true);
       const apiResponse = await axios.get("/api/v1/habit/get-habits");
       const result = await apiResponse.data.data;
-      // console.log(result);
       if (apiResponse.status === 200) {
         setIsLoading(false);
         setAllHabits(result);

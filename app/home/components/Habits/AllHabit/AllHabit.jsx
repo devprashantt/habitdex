@@ -2,7 +2,6 @@
 
 // libraries
 import { useState, useEffect } from "react";
-import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
 // components
 import HabitCard from "../../../../../components/Cards/HabitCard/HabitCard";

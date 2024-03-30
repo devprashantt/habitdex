@@ -16,7 +16,6 @@ const stringifyBody = (body) => {
 };
 
 export const sendData = ({ data, msg = "" }) => {
-  // console.log(data,typeof(data))
   return Response.json({
     data: data,
     msg: msg,
