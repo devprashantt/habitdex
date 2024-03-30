@@ -1,4 +1,4 @@
-export const dynamic = "force-dynamic"
+export const dynamic = "force-dynamic";
 
 // auth
 import { auth } from "@clerk/nextjs";
@@ -14,8 +14,6 @@ import logger from "@/lib/services/winston";
 
 export async function GET() {
   try {
-
-
     await connectDB();
     const { userId } = auth();
     if (!userId) {
@@ -61,7 +59,7 @@ export async function GET() {
       },
     });
     if (habitsResultError) {
-      console.log(habitsResultError)
+      console.log(habitsResultError);
       logger.log({
         level: "error",
         message: "Error while fetching habits 2",
@@ -83,10 +81,10 @@ export async function GET() {
 
     return sendData({
       data: habitsResult,
-      msg: "habits fetched successfully"
+      msg: "habits fetched successfully",
     });
   } catch (error) {
-    console.log(error)
+    console.log(error);
     logger.log({
       level: "error",
       message: "Error while fetching habits 1",

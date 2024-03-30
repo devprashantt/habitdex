@@ -26,25 +26,28 @@ export default function CreateHabit(props) {
     completion: 1,
     color: randColor,
   });
-  const {
-    loading,
-    handleSubmit,
-  } = useCreateHabit(props.setEvent, formData, setFormData);
+  const { loading, handleSubmit } = useCreateHabit(
+    props.setEvent,
+    formData,
+    setFormData,
+  );
 
   return (
     <div className={styles.main__container}>
       <div className={visible ? styles.visible__form : styles.hidden__form}>
-        <form className={styles.form__container} onSubmit={(e) => {
-          handleSubmit(e);
-          const randIcon =
-            habitFormIcons[Math.floor(Math.random() * habitFormIcons.length)].name;
-          const randColor =
-            themeColors[Math.floor(Math.random() * themeColors.length)].name;
-
-        }
-        }>
+        <form
+          className={styles.form__container}
+          onSubmit={(e) => {
+            handleSubmit(e);
+            const randIcon =
+              habitFormIcons[Math.floor(Math.random() * habitFormIcons.length)]
+                .name;
+            const randColor =
+              themeColors[Math.floor(Math.random() * themeColors.length)].name;
+          }}
+        >
           <div className={styles.top__container}>
-            <div className={styles.close__button} onClick={toggleVisible} >
+            <div className={styles.close__button} onClick={toggleVisible}>
               <IoCloseSharp />
             </div>
             <h2>New Habit</h2>
@@ -65,7 +68,9 @@ export default function CreateHabit(props) {
                 name="name"
                 className={styles.input__box}
                 value={formData.name}
-                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                onChange={(e) =>
+                  setFormData({ ...formData, name: e.target.value })
+                }
                 type="text"
               />
             </div>
@@ -76,7 +81,9 @@ export default function CreateHabit(props) {
                 name="description"
                 className={styles.input__box}
                 value={formData.description}
-                onChange={(e) => setFormData({ ...formData, description: e.target.value })}
+                onChange={(e) =>
+                  setFormData({ ...formData, description: e.target.value })
+                }
                 type="text"
               />
             </div>
@@ -94,7 +101,10 @@ export default function CreateHabit(props) {
                   <div
                     onClick={(e) => {
                       if (formData.completion > 1) {
-                        setFormData({ ...formData, completion: formData.completion - 1 })
+                        setFormData({
+                          ...formData,
+                          completion: formData.completion - 1,
+                        });
                       }
                     }}
                   >
@@ -103,7 +113,10 @@ export default function CreateHabit(props) {
                   <div
                     onClick={(e) => {
                       if (formData.completion < 9) {
-                        setFormData({ ...formData, completion: formData.completion + 1 });
+                        setFormData({
+                          ...formData,
+                          completion: formData.completion + 1,
+                        });
                       }
                     }}
                   >

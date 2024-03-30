@@ -57,7 +57,7 @@ export async function POST(request) {
       },
     });
     if (newHabitResultError) {
-      console.log(newHabitResultError)
+      console.log(newHabitResultError);
       return internalServerError({
         message: "Error while creating habit",
         error: newHabitResultError,
@@ -68,7 +68,7 @@ export async function POST(request) {
         message: "Error while creating habit",
         error: newHabitResultError,
       });
-    console.log("success")
+    console.log("success");
     return created({
       message: "Habit created successfully",
       data: newHabitResult,

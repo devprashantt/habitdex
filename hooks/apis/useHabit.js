@@ -13,12 +13,12 @@ const useHabit = () => {
       const result = await apiResponse.data.data;
       // console.log(result);
       if (apiResponse.status === 200) {
-        setIsLoading(false)
-        setAllHabits(result)
+        setIsLoading(false);
+        setAllHabits(result);
         return result;
         // cb(apiResponse.data);
       } else {
-        setIsLoading(false)
+        setIsLoading(false);
         setError(apiResponse.data.message);
         customToast({
           message: "Something went wrong",
@@ -41,7 +41,7 @@ const useHabit = () => {
     try {
       const apiResponse = await axios.post(
         `/api/v1/contribution/add-todays-contribution`,
-        payload
+        payload,
       );
 
       if (apiResponse.status === 200) {
@@ -71,7 +71,7 @@ const useHabit = () => {
   const getTodaysContribution = async (cb) => {
     try {
       const apiResponse = await axios.get(
-        `/api/v1/contribution/get-todays-contribution`
+        `/api/v1/contribution/get-todays-contribution`,
       );
 
       if (apiResponse.status === 200) {

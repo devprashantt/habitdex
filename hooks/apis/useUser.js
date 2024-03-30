@@ -11,8 +11,8 @@ const useUser = () => {
   const registerUser = async (cb) => {
     try {
       const apiResponse = await axios.get(`/api/v1/user/get-user`);
-      const resposne = await apiResponse.data
-      
+      const resposne = await apiResponse.data;
+
       if (resposne.msg === "User already exists") {
         customToast({
           message: "User registered successfully",

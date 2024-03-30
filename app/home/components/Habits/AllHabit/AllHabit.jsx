@@ -24,10 +24,10 @@ const AllHabit = (props) => {
   //   // });
   //   setAllHabits(getHabits());
   //   // setAllHabits(data)
-    
+
   // }, [props.event]);
 
-  useEffect(()=>{
+  useEffect(() => {
     getHabits(setAllHabits);
   }, [props.event]);
 

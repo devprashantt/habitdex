@@ -11,7 +11,6 @@ const useCreateHabit = (setEvent, formData, setFormData) => {
     habitFormIcons[Math.floor(Math.random() * habitFormIcons.length)].name;
   const randColor =
     themeColors[Math.floor(Math.random() * themeColors.length)].name;
-    
 
   const [loading, setLoading] = useState(false);
 

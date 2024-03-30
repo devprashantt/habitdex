@@ -1,4 +1,4 @@
-export const dynamic = "force-dynamic"
+export const dynamic = "force-dynamic";
 
 // auth
 import { auth, currentUser } from "@clerk/nextjs";
@@ -56,7 +56,7 @@ export async function GET() {
       });
       return sendData({
         data: userResult,
-        msg: "User already exists"
+        msg: "User already exists",
       });
     } else {
       const email = clerkUser?.emailAddresses[0].emailAddress ?? "";
@@ -83,8 +83,8 @@ export async function GET() {
       }
 
       return sendData({
-        data:newUserResult,
-        msg: "User created successfully"
+        data: newUserResult,
+        msg: "User created successfully",
       });
     }
   } catch (error) {
