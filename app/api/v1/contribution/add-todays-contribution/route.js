@@ -101,7 +101,6 @@ export async function POST(request) {
         },
       })(findNewContribution);
       if (newContributionError) {
-        newContributionError;
         logger.log({
           level: "error",
           message: "Error while adding new contribution",

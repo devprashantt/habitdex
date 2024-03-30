@@ -2,7 +2,7 @@
 import { ClerkProvider } from "@clerk/nextjs";
 
 // constants
-import "./globals.scss";
+import styles from  "./globals.scss";
 import { Navbar } from "@/components/Navbar";
 
 // meta-data
@@ -37,7 +37,9 @@ export default function RootLayout({ children }) {
         </head>
         <body>
           <Navbar />
-          {children}
+          <div className={styles.page__wrapper}>
+            {children}
+          </div>
         </body>
       </html>
     </ClerkProvider>
