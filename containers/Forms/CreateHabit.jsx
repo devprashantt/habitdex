@@ -11,29 +11,42 @@ import { IoCloseSharp } from "react-icons/io5";
 import { habitFormIcons, themeColors } from "@/constants";
 
 import styles from "./CreateHabit.module.scss";
+import { useState } from "react";
 
 export default function CreateHabit(props) {
   const [visible, toggleVisible] = useToggleState(false);
+  const randIcon =
+    habitFormIcons[Math.floor(Math.random() * habitFormIcons.length)].name;
+  const randColor =
+    themeColors[Math.floor(Math.random() * themeColors.length)].name;
+  const [formData, setFormData] = useState({
+    name: "",
+    description: "",
+    icon: randIcon,
+    completion: 1,
+    color: randColor,
+  });
   const {
-    formData,
-    updateName,
-    updateDescription,
-    updateIcon,
-    increaseCompletion,
-    decreaseCompletion,
-    updateColor,
     loading,
     handleSubmit,
-  } = useCreateHabit(props.setEvent);
+  } = useCreateHabit(props.setEvent, formData, setFormData);
 
   return (
     <div className={styles.main__container}>
       <div className={visible ? styles.visible__form : styles.hidden__form}>
-        <form className={styles.form__container} onSubmit={handleSubmit}>
+        <form className={styles.form__container} onSubmit={(e) => {
+          handleSubmit(e);
+          const randIcon =
+            habitFormIcons[Math.floor(Math.random() * habitFormIcons.length)].name;
+          const randColor =
+            themeColors[Math.floor(Math.random() * themeColors.length)].name;
+
+        }
+        }>
           <div className={styles.top__container}>
-            <button className={styles.close__button} onClick={toggleVisible}>
+            <div className={styles.close__button} onClick={toggleVisible} >
               <IoCloseSharp />
-            </button>
+            </div>
             <h2>New Habit</h2>
 
             <button
@@ -52,7 +65,7 @@ export default function CreateHabit(props) {
                 name="name"
                 className={styles.input__box}
                 value={formData.name}
-                onChange={(e) => updateName(e.target.value)}
+                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                 type="text"
               />
             </div>
@@ -63,7 +76,7 @@ export default function CreateHabit(props) {
                 name="description"
                 className={styles.input__box}
                 value={formData.description}
-                onChange={(e) => updateDescription(e.target.value)}
+                onChange={(e) => setFormData({ ...formData, description: e.target.value })}
                 type="text"
               />
             </div>
@@ -80,14 +93,18 @@ export default function CreateHabit(props) {
                 <div>
                   <div
                     onClick={(e) => {
-                      decreaseCompletion();
+                      if (formData.completion > 1) {
+                        setFormData({ ...formData, completion: formData.completion - 1 })
+                      }
                     }}
                   >
                     -
                   </div>
                   <div
                     onClick={(e) => {
-                      increaseCompletion();
+                      if (formData.completion < 9) {
+                        setFormData({ ...formData, completion: formData.completion + 1 });
+                      }
                     }}
                   >
                     +
@@ -120,7 +137,7 @@ export default function CreateHabit(props) {
                       className={styles.color__div}
                       key={index}
                       onClick={(e) => {
-                        updateIcon(iconDetail.name);
+                        setFormData({ ...formData, icon: iconDetail.name });
                       }}
                     >
                       {iconDetail?.icon}
@@ -146,7 +163,7 @@ export default function CreateHabit(props) {
                     <div
                       key={index}
                       onClick={(e) => {
-                        updateColor(color.name);
+                        setFormData({ ...formData, color: color.name });
                       }}
                       style={{
                         backgroundColor: color.color,

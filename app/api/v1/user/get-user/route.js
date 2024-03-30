@@ -54,7 +54,10 @@ export async function GET() {
         level: "info",
         message: `User already exists for id: ${userId}`,
       });
-      return sendData(userResult);
+      return sendData({
+        data: userResult,
+        msg: "User already exists"
+      });
     } else {
       const email = clerkUser?.emailAddresses[0].emailAddress ?? "";
 
@@ -79,7 +82,10 @@ export async function GET() {
         });
       }
 
-      return sendData(newUserResult);
+      return sendData({
+        data:newUserResult,
+        msg: "User created successfully"
+      });
     }
   } catch (error) {
     console.error(error);

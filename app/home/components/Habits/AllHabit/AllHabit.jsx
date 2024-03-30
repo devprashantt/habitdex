@@ -40,7 +40,7 @@ const AllHabit = (props) => {
               <HabitCard
                 id={habit._id}
                 key={index}
-                name={habit.habit_name}
+                name={habit.name}
                 description={habit.description}
                 icon={habit.icon}
                 color={habit.color}

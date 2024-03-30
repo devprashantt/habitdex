@@ -14,7 +14,7 @@ import logger from "@/lib/services/winston";
 
 export async function GET() {
   try {
-    
+
 
     await connectDB();
     const { userId } = auth();
@@ -81,9 +81,10 @@ export async function GET() {
       });
     }
 
-    return sendData(
-      habitsResult
-    );
+    return sendData({
+      data: habitsResult,
+      msg: "habits fetched successfully"
+    });
   } catch (error) {
     console.log(error)
     logger.log({
