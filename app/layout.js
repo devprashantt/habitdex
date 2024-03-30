@@ -3,6 +3,7 @@ import { ClerkProvider } from "@clerk/nextjs";
 
 // constants
 import "./globals.scss";
+import { Navbar } from "@/components/Navbar";
 
 // meta-data
 export const metadata = {
@@ -12,7 +13,21 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <ClerkProvider>
+    <ClerkProvider
+      appearance={{
+        // layout: {
+        //   logoImageUrl: "/favicon.ico",
+        //   socialButtonsVariant: "iconButton"
+        // },
+        variables: {
+          colorText: "#fff",
+          colorPrimary: "#0e78f9",
+          colorBackground: "#222",
+          colorInputBackground: "#252a41",
+          colorInputText: "#fff",
+        },
+      }}
+    >
       <html lang="en">
         <head>
           <link
@@ -20,7 +35,10 @@ export default function RootLayout({ children }) {
             href="https://gistcdn.githack.com/mfd/09b70eb47474836f25a21660282ce0fd/raw/e06a670afcb2b861ed2ac4a1ef752d062ef6b46b/Gilroy.css"
           />
         </head>
-        <body>{children}</body>
+        <body>
+          <Navbar />
+          {children}
+        </body>
       </html>
     </ClerkProvider>
   );
