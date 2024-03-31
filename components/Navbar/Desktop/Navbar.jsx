@@ -1,6 +1,7 @@
 import Link from "next/link";
 import styles from "./Navbar.module.scss";
 import { SignOutButton, SignedIn, SignedOut } from "@clerk/nextjs";
+import { FaGithub } from "react-icons/fa";
 
 const Navbar = () => {
   return (
@@ -9,8 +10,11 @@ const Navbar = () => {
         <h1>HabitDex</h1>
       </Link>
       <div className={styles.navbar__linkContainer}>
-        <Link className={styles.navbar__links} href="/">
+        <Link className={styles.navbar__links} href="/home">
           Home
+        </Link>
+        <Link className={styles.navbar__links__github} href="https://github.com/habitdex/habitdex">
+          <FaGithub />
         </Link>
         <SignedIn>
           <SignOutButton className={styles.signout__button} />

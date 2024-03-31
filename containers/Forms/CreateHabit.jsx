@@ -6,6 +6,9 @@ import useToggleState from "@/hooks/useToggleState";
 // icons
 import { MdDone } from "react-icons/md";
 import { IoCloseSharp } from "react-icons/io5";
+import { GoPlus } from "react-icons/go";
+import { FaPlus } from "react-icons/fa";
+
 
 // constants
 import { habitFormIcons, themeColors } from "@/constants";
@@ -193,7 +196,8 @@ export default function CreateHabit(props) {
         className={!visible ? styles.visible__button : styles.hidden__button}
         onClick={() => toggleVisible()}
       >
-        Add new Habit
+        {/* Add new Habit */}
+        <FaPlus />
       </button>
     </div>
   );

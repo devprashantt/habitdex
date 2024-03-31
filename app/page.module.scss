@@ -1,6 +1,8 @@
 @import "../constants/styles/mixins.scss";
 @import "../constants/styles/variables.scss";
 
+
+
 .main {
   width: 100vw;
   overflow: hidden;
@@ -10,7 +12,7 @@
   height: 100vh;
   width: 100%;
   color: white;
-  background-color: $gray-1000;
+  background-color: $background;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -49,7 +51,10 @@
 .main__part1__right {
   height: 100%;
   width: 50%;
-  background-color: $gray-800;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $primary;
   padding: 0px $spacing-800 0px $spacing-800;
 }
 
@@ -58,7 +63,7 @@
   width: 100%;
   font-size: 80px;
   padding: $spacing-600;
-  background-color: white;
+  background-color: $text;
   display: flex;
   justify-content: space-between;
 }
@@ -95,6 +100,7 @@
   width: 50%;
   padding: 0px $spacing-800 0px $spacing-800;
   display: flex;
+  background-color: $background;
   justify-content: center;
   align-items: flex-start;
   flex-direction: column;
@@ -122,6 +128,6 @@
 .main__part3__left {
   height: 100%;
   width: 50%;
-  background-color: $gray-800;
+  background-color: $primary;
   padding: 0px $spacing-800 0px $spacing-800;
 }

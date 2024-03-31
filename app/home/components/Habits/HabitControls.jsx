@@ -7,13 +7,15 @@ import CreateHabit from "@/containers/Forms/CreateHabit";
 import AllHabit from "./AllHabit/AllHabit";
 
 // styles
+import styles from "./HabitControls.module.scss"
+
 
 const HabitControls = () => {
   const [event, setEvent] = useState(0);
   return (
     <div>
       <CreateHabit event={event} setEvent={setEvent} />
-      <p>All Habits</p>
+      <p className={styles.p}>All Habits</p>
       <Suspense fallback={<p>Loading habits...</p>}>
         <AllHabit event={event} />
       </Suspense>

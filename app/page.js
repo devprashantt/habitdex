@@ -7,6 +7,7 @@ import Link from "next/link";
 // components and styles
 import styles from "./page.module.scss";
 import PrimaryButton from "@/components/Buttons/PrimaryButton/PrimaryButton";
+import Image from "next/image";
 
 export default async function Home() {
   const user = await currentUser();
@@ -30,7 +31,9 @@ export default async function Home() {
             </Link>
           </SignedOut>
         </div>
-        <div className={styles.main__part1__right}></div>
+        <div className={styles.main__part1__right}>
+          <Image width={500} priority={true}  height={500} src="/hero-image.png" alt="" />
+        </div>
       </div>
 
       <div className={styles.main__part2}>
@@ -44,10 +47,10 @@ export default async function Home() {
           <h3>OR</h3>
         </div>
         <div className={styles.main__part2__sign_up}>
-          <h1>Sign Up</h1>
           <Link href="/sign-up">
             <PrimaryButton>Sign Up</PrimaryButton>
           </Link>
+          <h1>Sign Up</h1>
         </div>
       </div>
 
@@ -60,7 +63,9 @@ export default async function Home() {
             tracking app.
           </h6>
           <SignedIn>
-            <Link href="/home">Home</Link>
+            <Link href="/home">
+              <PrimaryButton>Home</PrimaryButton>
+            </Link>
           </SignedIn>
           <SignedOut>
             <Link href="/sign-up">
