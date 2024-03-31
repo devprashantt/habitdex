@@ -52,13 +52,27 @@
 .navbar__links {
   color: black;
   font-weight: 700;
+  display: flex;
+  align-items: center;
   transition-duration: 200ms;
   &:hover {
     scale: 1.2;
     transition-duration: 200ms;
   }
 }
-
+.navbar__links__github {
+  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 700;
+  transition-duration: 200ms;
+  scale: 1.5;
+  &:hover {
+    scale: 1.7;
+    transition-duration: 200ms;
+  }
+}
 .signout__button {
   color: white;
   background-color: rgb(46, 46, 46);
