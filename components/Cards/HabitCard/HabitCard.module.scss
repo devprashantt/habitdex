@@ -1,7 +1,12 @@
+@import "@/constants/styles/variables.scss";
+@import "@/constants/styles/mixins.scss";
+
 .main__container__wrapper {
   border-radius: 6px;
   width: fit-content;
   padding: 10px 20px 10px 20px;
+  color: $gray-100;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.9);
 }
 
 .main__container {
@@ -13,17 +18,20 @@
 
 .main__container__child1 {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   gap: 2rem;
 }
 
 .icon__container {
   transition-duration: 200ms;
+  transform: translateY(13%);
+  scale: 1.2;
+  color: black;
 
   &:hover {
     transition-duration: 200ms;
-    scale: 1.2;
+    scale: 1.4;
   }
 }
 
@@ -34,21 +42,21 @@
 .addContribution {
   font-size: large;
   border-radius: 100%;
-  border: 1px solid white;
-  background-color: rgba($color: #000000, $alpha: 0.05);
-  width: 20px;
-  height: 20px;
-  scale: 1.2;
+  border: 1px solid rgba(255, 255, 255, 0.69);
+  background-color: rgba(255, 255, 255, 0.69);
+  width: 25px;
+  height: 25px;
   display: flex;
   justify-content: center;
   align-items: center;
   transition-duration: 200ms;
   cursor: pointer;
-  padding: 2px;
+  scale: 1.2;
+  color: black;
 
   &:hover {
     background-color: rgba($color: #000000, $alpha: 0.01);
     transition-duration: 200ms;
-    scale: 1.5;
+    scale: 1.4;
   }
 }

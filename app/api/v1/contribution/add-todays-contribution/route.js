@@ -113,4 +113,3 @@ export async function POST(request) {
     return internalServerError("Error processing contribution");
   }
 }
-

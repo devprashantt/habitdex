@@ -1,6 +1,26 @@
+@import "@/constants/styles/mixins.scss";
+@import "@/constants/styles/variables.scss";
+
+.visible__button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  padding: $spacing-500 $spacing-800;
+  border-radius: $border-radius-large;
+  color: $gray-1000;
+  background-color: $gray-100;
+}
+
+.hidden__button {
+  display: none;
+}
+
 .visible__form {
   position: absolute;
   background-color: white;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
   z-index: 10;
   display: block;
   padding: 20px 30px;
@@ -9,9 +29,6 @@
 }
 .hidden__form {
   display: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  border: 1px solid black;
 }
 .top__container {
   display: flex;

@@ -1,15 +1,22 @@
-.habit__container {
+.all__habits {
+  height: 80vh;
+  width: 100%;
   display: flex;
+  flex-wrap: nowrap;
   flex-direction: column;
-  gap: 5px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.habit__container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-gap: 30px;
 }
 
 .footer {
   display: flex;
   justify-content: center;
-}
-
-.page__container {
-  display: flex;
-  gap: 2rem;
+  align-items: center;
+  gap: 10px;
 }
