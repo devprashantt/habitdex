@@ -54,6 +54,16 @@ export async function POST(request) {
         populateOption: { path: "contributions" },
       },
     );
+    if(contributionResultError) {
+      logger.log({
+        level: "error",
+        message: "Error while fetching contributions",
+      });
+      return internalServerError({
+        msg: "Error while fetching contributions",
+        error: contributionResultError,
+      });
+    }
     return sendData({
       data: contributionResult,
       message: "Contributions fetched successfully",

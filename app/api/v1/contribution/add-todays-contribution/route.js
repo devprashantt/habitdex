@@ -55,7 +55,7 @@ export async function POST(request) {
       collection: DB_MODELS.CONTRIBUTION,
       query: {
         user_id: user._id,
-        name: name,
+        habit_id: habit._id,
         date: currentDate,
       },
     });
@@ -90,27 +90,26 @@ export async function POST(request) {
           date: currentDate,
           count: 1,
           user_id: user._id,
-          habit_id: habitId,
+          habit_id: habit._id,
         },
       });
       const [findNewContribution, findNewContributionError] = await findOne({
         collection: DB_MODELS.CONTRIBUTION,
         query: {
-          name,
+          habit_id: habit._id,
           date: currentDate,
         },
       });
-      console.log(findNewContribution, findNewContributionError);
-      if (newContributionError) {
+      
+      if (newContributionError || findNewContributionError) {
         logger.log({
           level: "error",
           message: "Error while adding new contribution",
         });
-        console.log(newContributionError);
         return internalServerError("Error while adding new contribution");
       } else {
         habit.contributions.push(findNewContribution._id);
-        habit.save();
+        await habit.save();
       }
     }
 
