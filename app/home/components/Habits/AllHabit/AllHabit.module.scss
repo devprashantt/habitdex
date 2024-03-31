@@ -10,6 +10,7 @@
   width: 100%;
   display: flex;
   flex-wrap: nowrap;
+  flex-wrap: nowrap;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
@@ -24,6 +25,8 @@
 .footer {
   display: flex;
   justify-content: center;
+  align-items: center;
+  gap: 10px;
   align-items: center;
   gap: 10px;
 }

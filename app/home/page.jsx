@@ -13,10 +13,10 @@ const page = async () => {
   return (
     <>
       <div className={styles.page__wrapper}>
-        <RegisterUser className={styles.user__button} />
-        <h2>{user?.firstName}</h2>
+        <RegisterUser classname={styles.user__button} />
+        <h2>Welcome {user?.firstName}</h2>
         <UserButton
-          className={styles.user__button}
+          classname={styles.user__button}
           afterSignOutUrl="/"
         ></UserButton>
         <HabitControls />

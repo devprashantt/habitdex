@@ -6,6 +6,8 @@ import { Suspense, useState } from "react";
 import CreateHabit from "@/containers/Forms/CreateHabit";
 import AllHabit from "./AllHabit/AllHabit";
 
+// styles
+
 const HabitControls = () => {
   const [event, setEvent] = useState(0);
   return (
