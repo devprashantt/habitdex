@@ -41,7 +41,6 @@ const AllHabit = (props) => {
             );
           })}
       </div>
-
     </div>
   );
 };
