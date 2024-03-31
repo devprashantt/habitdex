@@ -14,7 +14,7 @@ const page = async () => {
     <>
       <div className={styles.page__wrapper}>
         <RegisterUser classname={styles.user__button} />
-        <h2>Welcome {user?.firstName}</h2>
+        <h2 className={styles.heading}>Welcome {user?.firstName}</h2>
         <UserButton
           classname={styles.user__button}
           afterSignOutUrl="/"

@@ -9,7 +9,7 @@ const Navbar = () => {
         <h1>HabitDex</h1>
       </Link>
       <div className={styles.navbar__linkContainer}>
-        <Link className={styles.navbar__links} href="/">
+        <Link className={styles.navbar__links} href="/home">
           Home
         </Link>
         <SignedIn>
