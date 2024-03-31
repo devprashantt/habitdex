@@ -2,7 +2,6 @@
 @import "@/constants/styles/mixins.scss";
 
 .loading__page {
-  font-size: $xxx-large;
   box-sizing: border-box;
   color: $primary-200;
   font-weight: bolder;
@@ -18,6 +17,7 @@
   height: 100vh;
   width: 100%;
   padding: 10px;
+  padding-top: 80px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;

@@ -13,10 +13,9 @@ const useAllHabits = (event) => {
     const response = await axios.post("/api/v1/habit/get-habits", {
       skip: currentPage,
     });
-    const data = await response.data;
+    const data = await response.data.data;
     setHabit(data);
     setIsLoading(false);
-    // console.log(data);
   };
   useEffect(() => {
     FetchData();

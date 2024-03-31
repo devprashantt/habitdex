@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 // auth
 import { auth, currentUser } from "@clerk/nextjs";
 
@@ -15,7 +17,7 @@ import {
 } from "@/utils/responses";
 import { findOne, insertOne } from "@/lib/db/repository";
 
-export async function GET(request) {
+export async function GET() {
   try {
     const { userId } = auth();
     const clerkUser = await currentUser();
@@ -54,7 +56,7 @@ export async function GET(request) {
       });
       return sendData({
         data: userResult,
-        message: "User fetched successfully",
+        msg: "User already exists",
       });
     } else {
       const email = clerkUser?.emailAddresses[0].emailAddress ?? "";
@@ -69,7 +71,7 @@ export async function GET(request) {
         },
       });
       if (newUserResultError) {
-        console.error(newUserResultError);
+        // console.error(newUserResultError);
         logger.log({
           level: "error",
           message: newUserResultError,
@@ -82,7 +84,7 @@ export async function GET(request) {
 
       return sendData({
         data: newUserResult,
-        message: "Successfully created user",
+        msg: "User created successfully",
       });
     }
   } catch (error) {

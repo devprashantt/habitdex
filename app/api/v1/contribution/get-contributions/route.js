@@ -1,21 +1,13 @@
-// auth
+import connectDB from "@/lib/db/configs/connection";
+import { findAndPopulate, findOne } from "@/lib/db/repository";
+import logger from "@/lib/services/winston";
+import DB_MODELS from "@/utils/modelsEnum";
+import { internalServerError, sendData } from "@/utils/responses";
 import { auth } from "@clerk/nextjs";
 
-// db models
-import DB_MODELS from "@/utils/modelsEnum";
-import connectDB from "@/lib/db/configs/connection";
-
-// other imports
-import { resultPerPage } from "@/constants";
-import { notFound, sendData, unauthorized } from "@/utils/responses";
-import { findMany, findOne } from "@/lib/db/repository";
-import logger from "@/lib/services/winston";
-
-export async function GET(request) {
+export async function POST(request) {
+  const data = await request.json();
   try {
-    const data = await request.json();
-    const habitId = data.habitId;
-
     await connectDB();
     const { userId } = auth();
     if (!userId) {
@@ -39,7 +31,10 @@ export async function GET(request) {
         level: "error",
         message: "Error while fetching user",
       });
-      return internalServerError(userResultError);
+      return internalServerError({
+        message: "Error while fetching user",
+        error: userResultError,
+      });
     }
     if (!userResult) {
       logger.log({
@@ -50,44 +45,36 @@ export async function GET(request) {
         message: `User not found for id: ${userId}`,
       });
     }
-
-    const [habitResult, habitResultError] = await findOne({
-      collection: DB_MODELS.HABIT,
-      query: {
-        _id: habitId,
+    const [contributionResult, contributionResultError] = await findAndPopulate(
+      {
+        collection: DB_MODELS.HABIT,
+        query: {
+          _id: data._id,
+        },
+        populateOption: { path: "contributions" },
       },
-    });
-    if (habitResultError) {
+    );
+    if(contributionResultError) {
       logger.log({
         level: "error",
-        message: "Error while fetching habit",
+        message: "Error while fetching contributions",
       });
       return internalServerError({
-        message: "Error while fetching habit",
-        error: habitResultError,
+        msg: "Error while fetching contributions",
+        error: contributionResultError,
       });
     }
-    if (!habitResult) {
-      logger.log({
-        level: "error",
-        message: `Habit not found for id: ${habitId}`,
-      });
-      return notFound({
-        message: `Habit not found for id: ${habitId}`,
-      });
-    }
-
     return sendData({
-      message: "Habit fetched successfully",
-      data: habitResult,
+      data: contributionResult,
+      message: "Contributions fetched successfully",
     });
   } catch (error) {
     logger.log({
       level: "error",
-      message: "Error while fetching habit",
+      message: "Error while fetching contributions",
     });
     return internalServerError({
-      message: "Error while fetching habit",
+      msg: "Error while fetching contributions",
       error: error.message,
     });
   }

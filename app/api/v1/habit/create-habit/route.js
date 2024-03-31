@@ -17,7 +17,6 @@ import { findOne, insertOne } from "@/lib/db/repository";
 export async function POST(request) {
   try {
     const data = await request.json();
-
     // if no data bad response
     if (!data) return badRequest({ message: "No data provided" });
 
@@ -47,27 +46,27 @@ export async function POST(request) {
       });
 
     const [newHabitResult, newHabitResultError] = await insertOne({
-      model: DB_MODELS.HABIT,
+      collection: DB_MODELS.HABIT,
       data: {
-        habit_name: data?.name,
+        name: data?.name,
         description: data?.description,
         icon: data?.icon,
-        color_theme: data?.color,
+        color: data?.color,
         contributions_per_day: data?.contributions_per_day,
         user_id: userResult?._id,
       },
     });
-    if (newHabitResultError)
+    if (newHabitResultError) {
       return internalServerError({
         message: "Error while creating habit",
         error: newHabitResultError,
       });
+    }
     if (!newHabitResult)
       return badRequest({
         message: "Error while creating habit",
         error: newHabitResultError,
       });
-
     return created({
       message: "Habit created successfully",
       data: newHabitResult,

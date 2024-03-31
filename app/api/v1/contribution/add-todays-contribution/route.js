@@ -8,11 +8,11 @@ import logger from "@/lib/services/winston";
 
 // response
 import { created, internalServerError, notFound } from "@/utils/responses";
-import { findOne, insertOne } from "@/lib/db/repository";
+import { findOne, insertOne, update, updateOne } from "@/lib/db/repository";
 
 export async function POST(request) {
   const data = await request.json();
-  const { name, habitId } = data;
+  const { name, habitId } = await data;
 
   await connectDB();
 
@@ -38,7 +38,7 @@ export async function POST(request) {
       return notFound("Error while fetching user");
     }
 
-    const habit = await findOne({
+    const [habit, habitError] = await findOne({
       collection: DB_MODELS.HABIT,
       query: { _id: habitId },
     });
@@ -50,12 +50,12 @@ export async function POST(request) {
       return notFound("Habit not found");
     }
 
-    const currentDate = new Date().toISOString().split("T")[0];
+    const currentDate = new Date(new Date().toISOString().split("T")[0]);
     const [existingContribution, existingContributionError] = await findOne({
       collection: DB_MODELS.CONTRIBUTION,
       query: {
         user_id: user._id,
-        habit_id: habitId,
+        habit_id: habit._id,
         date: currentDate,
       },
     });
@@ -71,7 +71,7 @@ export async function POST(request) {
       const [_, updatedContributionError] = await updateOne({
         collection: DB_MODELS.CONTRIBUTION,
         query: { _id: existingContribution._id },
-        update: { $inc: { count: 1 } },
+        data: { $inc: { count: 1 } },
       });
       if (updatedContributionError) {
         logger.log({
@@ -90,21 +90,30 @@ export async function POST(request) {
           date: currentDate,
           count: 1,
           user_id: user._id,
-          habit_id: habitId,
+          habit_id: habit._id,
         },
       });
-      if (newContributionError) {
+      const [findNewContribution, findNewContributionError] = await findOne({
+        collection: DB_MODELS.CONTRIBUTION,
+        query: {
+          habit_id: habit._id,
+          date: currentDate,
+        },
+      });
+      
+      if (newContributionError || findNewContributionError) {
         logger.log({
           level: "error",
           message: "Error while adding new contribution",
         });
         return internalServerError("Error while adding new contribution");
+      } else {
+        habit.contributions.push(findNewContribution._id);
+        await habit.save();
       }
     }
 
-    return created("Contribution added successfully", {
-      contribution: currentDayContributionResult,
-    });
+    return created("Contribution added successfully", {});
   } catch (error) {
     logger.log({
       level: "error",

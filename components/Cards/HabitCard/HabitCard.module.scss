@@ -1,16 +1,18 @@
 @import "@/constants/styles/variables.scss";
 @import "@/constants/styles/mixins.scss";
 
+@import "@/constants/styles/variables.scss";
+@import "@/constants/styles/mixins.scss";
+
 .main__container__wrapper {
   border-radius: 6px;
-  width: fit-content;
+  width: 100%;
   padding: 10px 20px 10px 20px;
   color: $gray-100;
-  text-shadow: 0 0 10px rgba(0, 0, 0, 0.9);
+  color: black;
 }
-
 .main__container {
-  width: 20rem;
+  width: 30rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -18,6 +20,7 @@
 
 .main__container__child1 {
   display: flex;
+  justify-content: center;
   justify-content: center;
   align-items: center;
   gap: 2rem;
@@ -28,20 +31,24 @@
   transform: translateY(13%);
   scale: 1.2;
   color: black;
+  transform: translateY(13%);
+  scale: 1.2;
+  color: black;
 
   &:hover {
     transition-duration: 200ms;
     scale: 1.4;
+    scale: 1.4;
   }
-}
-
-.description {
-  font-size: small;
 }
 
 .addContribution {
   font-size: large;
   border-radius: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.69);
+  background-color: rgba(255, 255, 255, 0.69);
+  width: 25px;
+  height: 25px;
   border: 1px solid rgba(255, 255, 255, 0.69);
   background-color: rgba(255, 255, 255, 0.69);
   width: 25px;
@@ -53,10 +60,100 @@
   cursor: pointer;
   scale: 1.2;
   color: black;
+  scale: 1.2;
+  color: black;
 
   &:hover {
     background-color: rgba($color: #000000, $alpha: 0.01);
     transition-duration: 200ms;
     scale: 1.4;
   }
+}
+
+// react calendar
+
+.react-calendar-heatmap .color-scale-1 {
+  fill: #d6e685;
+}
+.react-calendar-heatmap .color-scale-2 {
+  fill: #8cc665;
+}
+.react-calendar-heatmap .color-scale-3 {
+  fill: #44a340;
+}
+.react-calendar-heatmap .color-scale-4 {
+  fill: #1e6823;
+}
+/*
+ * react-calendar-heatmap styles
+ *
+ * All of the styles in this file are optional and configurable!
+ * The github and gitlab color scales are provided for reference.
+ */
+
+.react-calendar-heatmap text {
+  font-size: 10px;
+  fill: #333;
+}
+
+.react-calendar-heatmap .react-calendar-heatmap-small-text {
+  font-size: 5px;
+  color: #000000;
+}
+
+.react-calendar-heatmap rect:hover {
+  stroke: #555;
+  stroke-width: 1px;
+}
+
+/*
+ * Default color scale
+ */
+
+.react-calendar-heatmap .color-empty {
+  fill: #eeeeee;
+}
+
+.react-calendar-heatmap .color-filled {
+  fill: #8cc665;
+}
+
+/*
+ * Github color scale
+ */
+
+.react-calendar-heatmap .color-github-0 {
+  fill: #eeeeee;
+}
+.react-calendar-heatmap .color-github-1 {
+  fill: #d6e685;
+}
+.react-calendar-heatmap .color-github-2 {
+  fill: #8cc665;
+}
+.react-calendar-heatmap .color-github-3 {
+  fill: #44a340;
+}
+.react-calendar-heatmap .color-github-4 {
+  fill: #1e6823;
+}
+
+/*
+ * Gitlab color scale
+ */
+
+.react-calendar-heatmap .color-gitlab-0 {
+  fill: #ededed;
+}
+.react-calendar-heatmap .color-gitlab-1 {
+  fill: #acd5f2;
+}
+.react-calendar-heatmap .color-gitlab-2 {
+  fill: #7fa8d1;
+}
+.react-calendar-heatmap .color-gitlab-3 {
+  fill: #49729b;
+}
+.react-calendar-heatmap .color-gitlab-4 {
+  fill: #254e77;
 }

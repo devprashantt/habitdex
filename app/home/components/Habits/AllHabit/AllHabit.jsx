@@ -17,11 +17,18 @@ const AllHabit = (props) => {
 
   const { getHabits, isLoading, error } = useHabit();
 
+  // useEffect( () => {
+  //   // getHabits(props.event, (habits) => {
+  //   //   setAllHabits(habits);
+  //   // });
+  //   setAllHabits(getHabits());
+  //   // setAllHabits(data)
+
+  // }, [props.event]);
+
   useEffect(() => {
-    getHabits(props.event, (habits) => {
-      setAllHabits(habits);
-    });
-  }, []);
+    getHabits(setAllHabits);
+  }, [props.event]);
 
   return (
     <div className={styles.all__habits}>
@@ -32,10 +39,10 @@ const AllHabit = (props) => {
               <HabitCard
                 id={habit._id}
                 key={index}
-                name={habit.habit_name}
+                name={habit.name}
                 description={habit.description}
                 icon={habit.icon}
-                color={habit.theme_color}
+                color={habit.color}
                 contributions_per_day={habit.contributions_per_day}
               />
             );

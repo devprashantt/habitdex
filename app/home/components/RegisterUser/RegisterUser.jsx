@@ -8,9 +8,7 @@ const RegisterUser = () => {
 
   const handleSubmit = async () => {
     const payload = {};
-    const response = await registerUser(payload, () => {
-      console.log(response);
-    });
+    const response = await registerUser(payload, () => {});
   };
 
   useEffect(() => {

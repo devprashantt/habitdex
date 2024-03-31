@@ -1,7 +1,15 @@
+.page__container {
+  display: flex;
+  gap: 2rem;
+}
+
+// merge
+
 .all__habits {
   height: 80vh;
   width: 100%;
   display: flex;
+  flex-wrap: nowrap;
   flex-wrap: nowrap;
   flex-direction: column;
   justify-content: space-between;
@@ -10,13 +18,15 @@
 
 .habit__container {
   display: grid;
-  grid-template-columns: auto auto auto;
-  grid-gap: 30px;
+  grid-template-columns: auto auto;
+  grid-gap: 60px;
 }
 
 .footer {
   display: flex;
   justify-content: center;
+  align-items: center;
+  gap: 10px;
   align-items: center;
   gap: 10px;
 }

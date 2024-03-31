@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 // auth
 import { auth } from "@clerk/nextjs";
 
@@ -10,10 +12,8 @@ import { notFound, sendData, internalServerError } from "@/utils/responses";
 import { findMany, findOne } from "@/lib/db/repository";
 import logger from "@/lib/services/winston";
 
-export async function GET(request) {
+export async function GET() {
   try {
-    const data = await request.json();
-
     await connectDB();
     const { userId } = auth();
     if (!userId) {
@@ -79,8 +79,8 @@ export async function GET(request) {
     }
 
     return sendData({
-      message: "Habits fetched successfully",
       data: habitsResult,
+      msg: "habits fetched successfully",
     });
   } catch (error) {
     logger.log({
