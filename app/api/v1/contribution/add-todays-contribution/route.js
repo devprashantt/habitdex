@@ -99,12 +99,14 @@ export async function POST(request) {
           name,
           date: currentDate,
         },
-      })(findNewContribution);
+      });
+      console.log(findNewContribution, findNewContributionError);
       if (newContributionError) {
         logger.log({
           level: "error",
           message: "Error while adding new contribution",
         });
+        console.log(newContributionError);
         return internalServerError("Error while adding new contribution");
       } else {
         habit.contributions.push(findNewContribution._id);

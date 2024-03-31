@@ -1,4 +1,4 @@
-import { SignIn, SignUp } from "@clerk/nextjs";
+import { SignUp } from "@clerk/nextjs";
 import styles from "./sign-up.module.scss";
 
 export default function Page() {

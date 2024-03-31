@@ -4,7 +4,7 @@
 import { useState, useEffect } from "react";
 
 // components
-import HabitCard from "../../../../../components/Cards/HabitCard/HabitCard";
+import HabitCard from "@/components/Cards/HabitCard/HabitCard";
 
 // misc
 import styles from "./AllHabit.module.scss";
@@ -31,7 +31,7 @@ const AllHabit = (props) => {
   }, [props.event]);
 
   return (
-    <div>
+    <div className={styles.all__habits}>
       <div className={styles.habit__container}>
         {!isLoading &&
           allHabits.map((habit, index) => {

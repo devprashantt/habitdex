@@ -12,7 +12,7 @@ const HabitControls = () => {
     <div>
       <CreateHabit event={event} setEvent={setEvent} />
       <p>All Habits</p>
-      <Suspense fallback={<p>Loading feed...</p>}>
+      <Suspense fallback={<p>Loading habits...</p>}>
         <AllHabit event={event} />
       </Suspense>
     </div>
