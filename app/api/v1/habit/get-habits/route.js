@@ -61,10 +61,10 @@ export async function GET() {
     if (habitsResultError) {
       logger.log({
         level: "error",
-        message: "Error while fetching habits 2",
+        message: "Error while fetching habits",
       });
       return internalServerError({
-        message: "Error while fetching habits 2",
+        message: "Error while fetching habits",
         error: habitsResultError,
       });
     }
@@ -85,10 +85,10 @@ export async function GET() {
   } catch (error) {
     logger.log({
       level: "error",
-      message: "Error while fetching habits 1",
+      message: "Error while fetching habits",
     });
     return internalServerError({
-      message: "Error while fetching habits 1",
+      message: "Error while fetching habits",
       error: error.message,
     });
   }
