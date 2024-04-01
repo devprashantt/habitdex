@@ -13,7 +13,10 @@ const Navbar = () => {
         <Link className={styles.navbar__links} href="/home">
           Home
         </Link>
-        <Link className={styles.navbar__links__github} href="https://github.com/habitdex/habitdex">
+        <Link
+          className={styles.navbar__links__github}
+          href="https://github.com/habitdex/habitdex"
+        >
           <FaGithub />
         </Link>
         <SignedIn>

@@ -1,10 +1,8 @@
 @import "@/constants/styles/mixins.scss";
 @import "@/constants/styles/variables.scss";
 
-
-
 .visible__button {
-  position: absolute;
+  position: fixed;
   bottom: 20px;
   right: 20px;
   transition-duration: 300ms;
@@ -49,7 +47,7 @@
   display: block;
   padding: 20px 30px;
   border-radius: 5px;
-  box-shadow: 0px 0px 5px 1px #888888;  
+  box-shadow: 0px 0px 5px 1px #888888;
 }
 .hidden__form {
   display: none;

@@ -64,7 +64,21 @@ const HabitCard = (props) => {
     >
       <div className={styles.main__container}>
         <div className={styles.main__container__child1}>
-          <div className={styles.icon__container}>
+          <div
+            style={{
+              color: color,
+              backgroundColor: "#000000bb",
+              borderRadius: "50%",
+              width: "25px",
+              height: "25px",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+
+              // ive lost it
+            }}
+            className={styles.icon__container}
+          >
             {habitFormIconsJson[props.icon]}
           </div>
           <div>

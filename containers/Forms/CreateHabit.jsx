@@ -9,7 +9,6 @@ import { IoCloseSharp } from "react-icons/io5";
 import { GoPlus } from "react-icons/go";
 import { FaPlus } from "react-icons/fa";
 
-
 // constants
 import { habitFormIcons, themeColors } from "@/constants";
 

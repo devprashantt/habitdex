@@ -100,7 +100,7 @@ export async function POST(request) {
           date: currentDate,
         },
       });
-      
+
       if (newContributionError || findNewContributionError) {
         logger.log({
           level: "error",

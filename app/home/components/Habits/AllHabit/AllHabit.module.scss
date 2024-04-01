@@ -6,11 +6,9 @@
 // merge
 
 .all__habits {
-  height: 80vh;
   width: 100%;
   display: flex;
-  flex-wrap: nowrap;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;

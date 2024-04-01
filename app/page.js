@@ -32,7 +32,13 @@ export default async function Home() {
           </SignedOut>
         </div>
         <div className={styles.main__part1__right}>
-          <Image width={500} priority={true}  height={500} src="/hero-image.png" alt="" />
+          <Image
+            width={500}
+            priority={true}
+            height={500}
+            src="/hero-image.png"
+            alt=""
+          />
         </div>
       </div>
 

@@ -112,7 +112,7 @@ const habitFormIconsJson = {
     <CiWavePulse1
       style={{
         padding: "1px",
-        backgroundColor: "white",
+
         scale: "1.5",
         borderRadius: "100%",
       }}
@@ -122,7 +122,7 @@ const habitFormIconsJson = {
     <IoAlarmOutline
       style={{
         padding: "1px",
-        backgroundColor: "white",
+
         scale: "1.5",
         borderRadius: "100%",
       }}
@@ -132,7 +132,7 @@ const habitFormIconsJson = {
     <CiApple
       style={{
         padding: "1px",
-        backgroundColor: "white",
+
         scale: "1.5",
         borderRadius: "100%",
       }}
@@ -142,8 +142,8 @@ const habitFormIconsJson = {
     <FaBed
       style={{
         padding: "1px",
-        backgroundColor: "white",
-        scale: "1.5",
+
+        scale: "1.2",
         borderRadius: "100%",
       }}
     />
@@ -152,7 +152,7 @@ const habitFormIconsJson = {
     <FaWallet
       style={{
         padding: "1px",
-        backgroundColor: "white",
+
         scale: "1.5",
         borderRadius: "100%",
       }}
@@ -162,7 +162,7 @@ const habitFormIconsJson = {
     <FaHeartCircleBolt
       style={{
         padding: "1px",
-        backgroundColor: "white",
+
         scale: "1.5",
         borderRadius: "100%",
       }}
@@ -172,7 +172,7 @@ const habitFormIconsJson = {
     <TbMoodKid
       style={{
         padding: "1px",
-        backgroundColor: "white",
+
         scale: "1.5",
         borderRadius: "100%",
       }}
@@ -182,7 +182,7 @@ const habitFormIconsJson = {
     <CgGym
       style={{
         padding: "1px",
-        backgroundColor: "white",
+
         scale: "1.5",
         borderRadius: "100%",
       }}
@@ -192,7 +192,7 @@ const habitFormIconsJson = {
     <FaBook
       style={{
         padding: "1px",
-        backgroundColor: "white",
+
         scale: "1.5",
         borderRadius: "100%",
       }}
@@ -202,7 +202,7 @@ const habitFormIconsJson = {
     <FaTerminal
       style={{
         padding: "1px",
-        backgroundColor: "white",
+
         scale: "1.5",
         borderRadius: "100%",
       }}
@@ -212,7 +212,7 @@ const habitFormIconsJson = {
     <IoColorPaletteOutline
       style={{
         padding: "1px",
-        backgroundColor: "white",
+
         scale: "1.5",
         borderRadius: "100%",
       }}
@@ -222,7 +222,7 @@ const habitFormIconsJson = {
     <FaYinYang
       style={{
         padding: "1px",
-        backgroundColor: "white",
+
         scale: "1.5",
         borderRadius: "100%",
       }}
@@ -232,7 +232,7 @@ const habitFormIconsJson = {
     <CiMusicNote1
       style={{
         padding: "1px",
-        backgroundColor: "white",
+
         scale: "1.5",
         borderRadius: "100%",
       }}
@@ -242,7 +242,7 @@ const habitFormIconsJson = {
     <FaShower
       style={{
         padding: "1px",
-        backgroundColor: "white",
+
         scale: "1.5",
         borderRadius: "100%",
       }}
@@ -252,7 +252,7 @@ const habitFormIconsJson = {
     <TbNotes
       style={{
         padding: "1px",
-        backgroundColor: "white",
+
         scale: "1.5",
         borderRadius: "100%",
       }}
@@ -262,7 +262,7 @@ const habitFormIconsJson = {
     <RiCupLine
       style={{
         padding: "1px",
-        backgroundColor: "white",
+
         scale: "1.5",
         borderRadius: "100%",
       }}
@@ -272,7 +272,7 @@ const habitFormIconsJson = {
     <TbCurrencyDollar
       style={{
         padding: "1px",
-        backgroundColor: "white",
+
         scale: "1.5",
         borderRadius: "100%",
       }}
@@ -282,7 +282,7 @@ const habitFormIconsJson = {
     <CiHeart
       style={{
         padding: "1px",
-        backgroundColor: "white",
+
         scale: "1.5",
         borderRadius: "100%",
       }}
@@ -292,7 +292,7 @@ const habitFormIconsJson = {
     <LuLeaf
       style={{
         padding: "1px",
-        backgroundColor: "white",
+
         scale: "1.5",
         borderRadius: "100%",
       }}
@@ -302,7 +302,7 @@ const habitFormIconsJson = {
     <GiConsoleController
       style={{
         padding: "1px",
-        backgroundColor: "white",
+
         scale: "1.5",
         borderRadius: "100%",
       }}
@@ -312,7 +312,7 @@ const habitFormIconsJson = {
     <FaBicycle
       style={{
         padding: "1px",
-        backgroundColor: "white",
+
         scale: "1.5",
         borderRadius: "100%",
       }}

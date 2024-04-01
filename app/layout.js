@@ -20,9 +20,9 @@ export default function RootLayout({ children }) {
         //   socialButtonsVariant: "iconButton"
         // },
         variables: {
-          colorText: "#fff",
+          colorText: "#081326",
           colorPrimary: "#0e78f9",
-          colorBackground: "#222",
+          colorBackground: "#e1e8f9",
           colorInputBackground: "#252a41",
           colorInputText: "#fff",
         },

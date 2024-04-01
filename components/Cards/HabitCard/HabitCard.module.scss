@@ -31,13 +31,9 @@
   transform: translateY(13%);
   scale: 1.2;
   color: black;
-  transform: translateY(13%);
-  scale: 1.2;
-  color: black;
-
+  background-color: rgba(0, 0, 0, 0);
   &:hover {
     transition-duration: 200ms;
-    scale: 1.4;
     scale: 1.4;
   }
 }
