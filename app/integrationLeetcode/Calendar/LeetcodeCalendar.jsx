@@ -29,7 +29,7 @@ const LeetcodeCalendar = (props) => {
           width: "100%",
         }}
       >
-        <h1>{username}'s leetcode history</h1>
+        <h1>{username}&apos;s leetcode history</h1>
         <CalendarHeatmap
           startDate={oneYearAgo}
           endDate={today}
