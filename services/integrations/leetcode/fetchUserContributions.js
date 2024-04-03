@@ -1,6 +1,7 @@
+import INTEGRATION_URLS from "@/utils/integrationEnum";
 import axios from "axios";
 
-const leetcodeGraphQLEndpoint = "https://leetcode.com/graphql/"; // Replace with LeetCode's endpoint if they have one
+const leetcodeGraphQLEndpoint = INTEGRATION_URLS.LeetCode; // Replace with LeetCode's endpoint if they have one
 
 const fetchData = async (username) => {
   const graphqlData = {
@@ -17,24 +18,16 @@ const fetchData = async (username) => {
     data.data.matchedUser.userCalendar.submissionCalendar,
   );
 
-  const mordified = new Array();
+  const calendarFormated = new Array();
   for (const day in calendar) {
     const date = new Date(Number(day + "000"));
     const mordifiedDate = date.toISOString().split("T")[0];
     const tmp = { date: mordifiedDate, count: calendar[day] };
-    mordified.push(tmp);
+    calendarFormated.push(tmp);
   }
 
-  // console.log(mordified)
 
-  return mordified;
-  // axios.post(leetcodeGraphQLEndpoint, graphqlData)
-  //   .then(response => {
-  //     console.log(response.data.data.matchedUser.userCalendar);
-  //   })
-  //   .catch(error => {
-  //     console.error("Error fetching data:", error);
-  //   });
+  return calendarFormated;
 };
 
 export default fetchData;

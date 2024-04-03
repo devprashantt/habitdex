@@ -1,14 +1,17 @@
-"use client";
+"use client"
 import CalendarHeatmap from "react-calendar-heatmap";
 import "react-calendar-heatmap/dist/styles.css";
 
-const LeetcodeCalendar = (props) => {
+const GithubCalendar = (props) => {
+  console.log(props.calendar)
   const username = "anuragdaksh";
   const date = new Date();
   const absoluteDate = new Date(date.toDateString());
   const today = absoluteDate.toISOString().split("T")[0];
   absoluteDate.setFullYear(absoluteDate.getFullYear() - 1);
   const oneYearAgo = absoluteDate.toISOString().split("T")[0];
+
+
   return (
     <div
       style={{
@@ -26,7 +29,7 @@ const LeetcodeCalendar = (props) => {
           width: "100%",
         }}
       >
-        <h1>{username}&apos;s leetcode history</h1>
+        <h1>{username}&apos;s Github history</h1>
         <CalendarHeatmap
           startDate={oneYearAgo}
           endDate={today}
@@ -48,6 +51,8 @@ const LeetcodeCalendar = (props) => {
       </div>
     </div>
   );
-};
+}
 
-export default LeetcodeCalendar;
+export default GithubCalendar
+
+
