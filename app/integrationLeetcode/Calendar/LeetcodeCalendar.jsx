@@ -25,8 +25,8 @@ const LeetcodeCalendar = (props) => {
         style={{
           width: "100%",
         }}
-      >
-        <h1>{username}&apos;s leetcode history</h1>
+      >{
+        (props.error)?<p>Error fetching user data</p>:<><h1>{username}&apos;s leetcode history</h1>
         <CalendarHeatmap
           startDate={oneYearAgo}
           endDate={today}
@@ -44,7 +44,9 @@ const LeetcodeCalendar = (props) => {
             }
             return `color-github-${value.count}`;
           }}
-        />
+        /></>
+      }
+        
       </div>
     </div>
   );

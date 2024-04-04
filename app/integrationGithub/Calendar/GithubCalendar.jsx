@@ -29,25 +29,30 @@ const GithubCalendar = (props) => {
           width: "100%",
         }}
       >
-        <h1>{username}&apos;s Github history</h1>
-        <CalendarHeatmap
-          startDate={oneYearAgo}
-          endDate={today}
-          // values={[
-          //   { date: '2024-01-01', count: 1 },
-          //   { date: '2024-01-22', count: 2 },
-          //   { date: '2024-01-30', count: 3 },
-          //   { date: '2024-03-21', count: 3 }
+        {
+          (props.error) ? <p>Error fetching user data</p> : <>
+            <h1>{username}&apos;s Github history</h1>
+            <CalendarHeatmap
+              startDate={oneYearAgo}
+              endDate={today}
+              // values={[
+              //   { date: '2024-01-01', count: 1 },
+              //   { date: '2024-01-22', count: 2 },
+              //   { date: '2024-01-30', count: 3 },
+              //   { date: '2024-03-21', count: 3 }
 
-          // ]}
-          values={props.calendar}
-          classForValue={(value) => {
-            if (!value) {
-              return "color-empty";
-            }
-            return `color-github-${value.count}`;
-          }}
-        />
+              // ]}
+              values={props.calendar}
+              classForValue={(value) => {
+                if (!value) {
+                  return "color-empty";
+                }
+                return `color-github-${value.count}`;
+              }}
+            />
+          </>
+        }
+
       </div>
     </div>
   );

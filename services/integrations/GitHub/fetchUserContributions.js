@@ -4,6 +4,7 @@ import axios from "axios";
 
 
 const fetchGithubData = async (username) => {
+  try{
   const gqlData = {
     query: `
     query ContributionsByYear($login: String!) {
@@ -51,7 +52,11 @@ const fetchGithubData = async (username) => {
     }
   }
   
-  return formattedData;
+  return [formattedData,null];
+  }
+  catch(err){
+    return [null,err]
+  }
 
 }
 

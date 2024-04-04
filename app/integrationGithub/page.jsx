@@ -3,11 +3,11 @@ import GithubCalendar from "./Calendar/GithubCalendar";
 
 const page = async () => {
 
-  const calendar = await fetchGithubData("anuragdaksh7");
+  const [calendar,error] = await fetchGithubData("anuragdaksh7");
 
   return (
     <div>
-      <GithubCalendar calendar={calendar}/>
+      <GithubCalendar calendar={calendar} error={Boolean(error)}/>
     </div>
   )
 }

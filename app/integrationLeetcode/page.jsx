@@ -3,10 +3,10 @@ import fetchData from "@/services/integrations/leetcode/fetchUserContributions";
 
 const page = async () => {
   const username = "anuragdaksh";
-  const response = await fetchData(username);
+  const [response,error] = await fetchData(username);
   return (
     <div>
-      <LeetcodeCalendar calendar={response} />
+      <LeetcodeCalendar calendar={response} error={Boolean(error)} />
     </div>
   );
 };
