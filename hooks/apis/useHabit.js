@@ -36,6 +36,14 @@ const useHabit = () => {
     }
   };
 
+  const getHabit = async (habitId) => {
+    const response = await axios.post("/api/v1/habit/get-habit", {
+      habitId: habitId,
+    });
+    const data = await response.data.data;
+    return data;
+  };
+
   const addTodaysContribution = async (payload, cb) => {
     try {
       const apiResponse = await axios.post(
@@ -98,6 +106,7 @@ const useHabit = () => {
     addTodaysContribution,
     getTodaysContribution,
     getHabits,
+    getHabit,
     error,
     isLoading,
   };

@@ -1,16 +1,15 @@
-"use client"
+"use client";
 import CalendarHeatmap from "react-calendar-heatmap";
 import "react-calendar-heatmap/dist/styles.css";
 
 const GithubCalendar = (props) => {
-  console.log(props.calendar)
+  console.log(props.calendar);
   const username = "anuragdaksh";
   const date = new Date();
   const absoluteDate = new Date(date.toDateString());
   const today = absoluteDate.toISOString().split("T")[0];
   absoluteDate.setFullYear(absoluteDate.getFullYear() - 1);
   const oneYearAgo = absoluteDate.toISOString().split("T")[0];
-
 
   return (
     <div
@@ -29,8 +28,10 @@ const GithubCalendar = (props) => {
           width: "100%",
         }}
       >
-        {
-          (props.error) ? <p>Error fetching user data</p> : <>
+        {props.error ? (
+          <p>Error fetching user data</p>
+        ) : (
+          <>
             <h1>{username}&apos;s Github history</h1>
             <CalendarHeatmap
               startDate={oneYearAgo}
@@ -51,13 +52,10 @@ const GithubCalendar = (props) => {
               }}
             />
           </>
-        }
-
+        )}
       </div>
     </div>
   );
-}
+};
 
-export default GithubCalendar
-
-
+export default GithubCalendar;

@@ -27,12 +27,10 @@ const fetchData = async (username) => {
       calendarFormated.push(tmp);
     }
 
-
-    return [calendarFormated,null];
+    return [calendarFormated, null];
+  } catch (error) {
+    return [null, error];
   }
-  catch (error) {
-    return [null,error]
-  }
-}
+};
 
 export default fetchData;
