@@ -6,7 +6,6 @@ import useToggleState from "@/hooks/useToggleState";
 // icons
 import { MdDone } from "react-icons/md";
 import { IoCloseSharp } from "react-icons/io5";
-import { GoPlus } from "react-icons/go";
 import { FaPlus } from "react-icons/fa";
 
 // constants
@@ -147,17 +146,32 @@ export default function CreateHabit(props) {
               />
               <div className={styles.icon__container}>
                 {habitFormIcons?.map((iconDetail, index) => {
-                  return (
-                    <div
-                      className={styles.color__div}
-                      key={index}
-                      onClick={(e) => {
-                        setFormData({ ...formData, icon: iconDetail.name });
-                      }}
-                    >
-                      {iconDetail?.icon}
-                    </div>
-                  );
+                  if (iconDetail.name === formData.icon) {
+                    return (
+                      <div
+                        className={styles.color__div}
+                        key={index}
+                        style={{ opacity: 0.5 }}
+                        onClick={(e) => {
+                          setFormData({ ...formData, icon: iconDetail.name });
+                        }}
+                      >
+                        {iconDetail?.icon}
+                      </div>
+                    );
+                  } else {
+                    return (
+                      <div
+                        className={styles.color__div}
+                        key={index}
+                        onClick={(e) => {
+                          setFormData({ ...formData, icon: iconDetail.name });
+                        }}
+                      >
+                        {iconDetail?.icon}
+                      </div>
+                    );
+                  }
                 })}
               </div>
             </div>
@@ -174,17 +188,32 @@ export default function CreateHabit(props) {
               />
               <div className={styles.color__container}>
                 {themeColors?.map((color, index) => {
-                  return (
-                    <div
-                      key={index}
-                      onClick={(e) => {
-                        setFormData({ ...formData, color: color.name });
-                      }}
-                      style={{
-                        backgroundColor: color.color,
-                      }}
-                    ></div>
-                  );
+                  if (color.name === formData.color) {
+                    return (
+                      <div
+                        key={index}
+                        onClick={(e) => {
+                          setFormData({ ...formData, color: color.name });
+                        }}
+                        style={{
+                          backgroundColor: color.color,
+                          opacity: 0.5,
+                        }}
+                      ></div>
+                    );
+                  } else {
+                    return (
+                      <div
+                        key={index}
+                        onClick={(e) => {
+                          setFormData({ ...formData, color: color.name });
+                        }}
+                        style={{
+                          backgroundColor: color.color,
+                        }}
+                      ></div>
+                    );
+                  }
                 })}
               </div>
             </div>
