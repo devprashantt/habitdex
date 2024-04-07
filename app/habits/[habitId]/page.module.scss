@@ -1,0 +1,8 @@
+@import "@/constants/styles/variables.scss";
+
+.main__container {
+  padding-top: 80px;
+  height: 100vh;
+  background-color: $background;
+  color: $text;
+}
